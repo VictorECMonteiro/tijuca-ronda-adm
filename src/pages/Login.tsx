@@ -1,14 +1,10 @@
-import { Button } from "../components/Button"
+
+//  import Nada from "../components/Nada";
 import Illustration from "../components/Illustration";
 export const Login = () => {
 return (
-    <div>
-    <Button/>
-    <div>
-    <Illustration/>
-    </div>
-    </div>
-
+    // <Nada/>
+  <Illustration/>
 )
 }
 

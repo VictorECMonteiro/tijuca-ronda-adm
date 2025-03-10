@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 import styles from "../styles/Illustration.module.css";
 import Circulo from "./Circulo"
 import POLICIAL from '../assets/img/POLICIAL.png';
 
-=======
-import styles from "../styles/components/Illustration.module.css";
->>>>>>> 6f23b274f62dc7c4739df37298c6ff52b36e040b
 const Illustration = () => {
   return (
     <div>

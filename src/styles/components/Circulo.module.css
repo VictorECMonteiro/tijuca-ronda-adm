@@ -1,13 +1,18 @@
 .cont {
-    position: fixed;
-    bottom: -20%;
+    position: absolute;
     left: 50%;
+    margin-bottom: -10%;
     transform: translateX(-50%);
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 3;
+    
 }
-
 .outerCircle {
-    width: 45vw;
+
+    width: 45vw; 
     height: 45vw;
     background-color: #F5A802;
     border-radius: 50%;
@@ -17,11 +22,10 @@
 }
 
 .innerCircle {
-    width: 30vw;
-    height: 30vw;
+    width: 35vw; 
+    height: 35vw;
+    min-width: 10vw;
     background-color: #123465;
-    border: 25px
-    solid #fff;
+    border: 2vw solid #fff;
     border-radius: 50%;
 }
-

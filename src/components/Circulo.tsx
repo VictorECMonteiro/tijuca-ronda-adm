@@ -1,5 +1,5 @@
-import styles from "../styles/Circulo.module.css";
-import POLICIAL from '../assets/img/POLICIAL.png';
+import styles from "../styles/components/Circulo.module.css";
+
 
 
 const Circles = () => {

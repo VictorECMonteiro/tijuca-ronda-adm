@@ -1,16 +1,30 @@
+
 import styles from "../styles/components/Button.module.css"
 
-enum botaoTamanho{
-    "P"="P",
-    "M"="M",
-    "G"="G"
+enum BotaoTamanho {
+    P = "P",
+    M = "M",
+    G = "G",
+    PP = "PP"
 }
 
-export const Button = ({title, script, tamanho}: {title:string, script, tamanho:keyof typeof botaoTamanho}) => {
-    return(
-        <button onClick={()=>script()} className={`${styles.Button} ${styles[botaoTamanho[tamanho]]}`}>                                                                                                                                                             <h1>{title}</h1>
-        </                                                                                                                                                  button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-    )
+interface ButtonProps {
+    title: string;
+    script: () => void;
+    tamanho: keyof typeof BotaoTamanho;
+    className?: string; 
+    disabled?: boolean; 
+}
+
+export const Button: React.FC<ButtonProps> = ({ title, script, tamanho, className, disabled }) => {
+    const buttonClass = `${styles.Button} ${styles[tamanho] || ""} ${className || ""}`.trim();
+
+    return (
+        <button onClick={script} className={buttonClass} disabled={disabled}>
+            <h1>{title}</h1>
+        </button>
+    );
 }
 
 export default Button;
+

@@ -1,0 +1,22 @@
+.actions {
+    display: flex;
+    margin-left: 65%;
+    gap: 80%;
+    /* background-color: brown; */
+    z-index: 1000;
+    /* margin-left: 60%; */
+  }
+  
+  .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .icon {
+    height: 3vh;
+    display: block; 
+    visibility: visible;
+    opacity: 1;
+    /* margin-left: 50%; */
+  }

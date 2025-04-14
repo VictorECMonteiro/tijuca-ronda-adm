@@ -18,7 +18,6 @@
     font-family: "Poppins";
     font-weight: bolder;
     font-size: 2vh;
-    color: #fff;
     text-align: center;
     text-transform: capitalize;
 }
@@ -29,13 +28,21 @@
     border-radius: 1vh;
     border:  none;
 }
+
+.PP {
+    font-size: 18px;
+    width: 8vw;
+    height: 4vh;
+    border-radius: 1vh;
+    border:  none;
+}
+
 .P h1{
     font-size: 1.5vh;
 }
 .P {
     font-size: 10px;
-    background-color: #123465;
-    width:50%;
+    width: 200px;
     height: 6vh;
     border-radius: 1vh;
     border:  none;

@@ -8,6 +8,7 @@ const Local = () => {
 
   if (loading) return <p>Carregando...</p>;
   if (error) return <p>{error}</p>;
+  console.log(Local)
 
   return (
     <div className={styles.coniner}>

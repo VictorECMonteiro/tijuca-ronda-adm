@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Users from "./pages/Users"
 import Rota from "./pages/Rota";
 import Local from "./pages/Local";
+import Logs from "./pages/Logs";
 
 const App: React.FC = () => {
   return (
@@ -13,7 +14,8 @@ const App: React.FC = () => {
       <Route path="/Home" element={<Home />} />
       <Route path="/Users" element={<Users />} />
       <Route path="/Local" element={<Local />} />
-      <Route path="/Rota" element={<Rota />} />
+      <Route path="/Rota" element={<Rota />} /> 
+      <Route path="/Logs" element={<Logs />} /> 
     </Routes>
   );
 };

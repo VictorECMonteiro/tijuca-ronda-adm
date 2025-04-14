@@ -1,0 +1,63 @@
+.conter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.eader {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) 80px;
+  align-items: center;
+  background: #f5f5f5;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.columnLabel {
+  text-align: left;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) 80px;
+  align-items: center;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.item {
+  text-align: left;
+}
+
+.statusContainer {
+  display: flex;
+  gap: 5px;
+}
+
+.contbut {
+ display: flex;
+ justify-content: end;
+ /* background-color: chocolate; */
+}
+
+.aButton {
+  background-color: #1FDE85;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.aButton:hover {
+  background-color: #009624;
+}

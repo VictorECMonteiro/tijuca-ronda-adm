@@ -2,21 +2,31 @@
 
 
 body {
+  overflow-y: hidden;
+  overflow-x: hidden;
+
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
+  /*  */
 }
 
 .sidebar {
-  width: 16vw;
+  /* width: 100%; */
+  /* display: flex; */
+  /* width: 100%; */
+  width: 20em;
   height: 98vh;
-  background: #fff;
+  /* background: #fff; */
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   padding: 0 1vw 1vw 1vw;
   /* background-color: cadetblue; */
   overflow: hidden;
+  transition: ease-in 0.3s;
+  transition-timing-function: cubic-bezier(0,.52,.41,1.19);
+  
 }
 
 .user {
@@ -26,12 +36,13 @@ body {
   text-align: center;
   /* background-color: brown; */
   padding: 4px;
+  
 
 }
 
 .logo {
   width: 9vw;
-
+  
   /* background-color: chartreuse; */
 }
 
@@ -43,7 +54,7 @@ body {
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
- 
+  
   padding: 1vh;
 }
 
@@ -55,6 +66,7 @@ body {
   align-items: flex-start;
   border-radius: 50%;
   /* background-color: blueviolet; */
+  
 }
 
 .username {
@@ -63,6 +75,7 @@ body {
   font-size: 12px;
   margin-bottom: 0;
   /* background-color: #777; */
+  
 }
 
 .userId {
@@ -70,15 +83,18 @@ body {
   font-size: 12px;
   color: #777;
   /* background-color: hotpink; */
+  
 }
 
 
 
 .menu {
-  display: flex;
+  position: static;
+   display: flex;
   flex-direction: column;
   padding: 1vh;
   /* background-color: chocolate; */
+  
 }
 
 .menuItem1 {
@@ -91,10 +107,25 @@ body {
   background-color: #FA3535;
   margin-bottom: 1vw;
   border: 1px solid #dad2d2;
+  position: static;
+  
 }
 
 .menuItem1:hover{
   background: #f0f0f0;
+  
+}
+.close{
+  width: 0;
+  height: 100vh;
+  background-color: transparent;
+  overflow: hidden;
+  /* transition: ease-out 20s; */
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  /* background-color: transparent; */
 }
 
 
@@ -110,13 +141,14 @@ body {
   transition: 0.3s;
   /* background-color: crimson; */
   border: 1px solid #dad2d2;
-
+  position: static;
     white-space: nowrap;
-  
+    
 }
 
 .menuItem:hover {
   background: #f0f0f0;
+  
 }
 
 .menutext {
@@ -126,6 +158,7 @@ body {
   color: black;
   text-decoration: none;
   position: relative;
+  
 }
 
 .menutext1 {
@@ -136,6 +169,7 @@ body {
   text-decoration: none;
   position: relative;
   color: #fff;
+  
 }
 
 .icone{
@@ -143,17 +177,14 @@ body {
   position: fixed;
   color: #fff;
   margin-left: -3px;
+  
 }
 
 .icons{
   font-size: 20px;
   position: fixed;
   margin-left: -3px;
-}
-
-
-.active {
-  background: #d1d1d1;
+  
 }
 
 footer {
@@ -165,7 +196,7 @@ footer {
   text-align: center;
   font-size: 12px;
   color: #000;
-
+  
 }
 
 /* @media(max-width:1200px) {

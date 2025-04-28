@@ -1,12 +1,46 @@
 
 .coniner {
   display: flex;
+  /* justify-content: space-around; */
+  /* flex-direction: row; */
   height: 100vh;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
-
+.hamburguer{
+  display: none;
+}
 .content {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
+}
+.sidebarDiv {
+  width: 0;
+  height: 100vh;
+  background-color: transparent;
+  overflow: hidden;
+  /* transition: ease-out 20s; */
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.sidebarDivActive {
+  width: 50vw;
+  transition: ease-in 20s;
+}
+
+
+
+@media (max-width:470px){
+  .coniner{
+    flex-direction: column;
+  }
+  
+  .hamburguer{
+    display: block;
+    /* background-color: yellow; */
+  }
+
 }

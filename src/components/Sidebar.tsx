@@ -11,9 +11,9 @@ const MapPinIcon = FiMapPin as unknown as React.FC<React.SVGProps<SVGSVGElement>
 const MapIcon = FiMap as unknown as React.FC<React.SVGProps<SVGSVGElement>>;
 const FileTextIcon = FiFileText as unknown as React.FC<React.SVGProps<SVGSVGElement>>;
 
-const Sidebar: React.FC = () => {
+const Sidebar = ({isOpen}: {isOpen?: any}) => {
   return (
-    <div className={styles.sidebar}>
+    <div className={isOpen || document.body.clientWidth > 470?styles.sidebar:styles.close}>
       <div className={styles.user}>
         <img src={logo} alt="logo" className={styles.logo} />
         <div className={styles.user2}>
@@ -33,7 +33,7 @@ const Sidebar: React.FC = () => {
             Encerrar Sessão
           </div>
         </a>
-      
+        
           <a href="/home" className={styles.menuItem}>
           <HomeIcon className={styles.icons} />
            <div className={styles.menutext}>Página Inicial</div>

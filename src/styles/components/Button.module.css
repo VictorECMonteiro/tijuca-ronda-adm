@@ -20,6 +20,7 @@
     font-size: 2vh;
     text-align: center;
     text-transform: capitalize;
+    white-space: nowrap;
 }
 .M{
     width: 23vw;
@@ -27,6 +28,24 @@
     background-color: #123465;
     border-radius: 1vh;
     border:  none;
+}
+
+.MM {
+    margin-top: 5%;
+    margin-left: 55px;
+    width: 200px;
+    height: 25vh;
+    background-color: #fff;
+    border-radius: 1vh;
+    border:  none;
+    color: #000;
+}
+
+.MM h1 {
+    font-size: 1.5vh;
+    /* font-family: "Poppins"; */
+    font-weight: 600;
+    
 }
 
 .PP {
@@ -49,7 +68,7 @@
 }
 .G {
     background-color: #123465;
-    width: 30vw;
+    width: 35vw;
     height: 8vh;
     border-radius: 1vh;
     border:  none;

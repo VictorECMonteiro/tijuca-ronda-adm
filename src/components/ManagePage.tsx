@@ -24,8 +24,7 @@ export const ManagePage = <T extends Record<string, any>>({
   return (
     <div className={styles.container}>
       <TableHeader title={title} description={description} />
-      <DataTable data={data} columns={columns} onEdit={onEdit} onDelete={onDelete} onAdd={onAdd}/>
+      <DataTable data={data} columns={columns} onEdit={onEdit} onDelete={onDelete} onAdd={onAdd} />
     </div>
   );
 };
-

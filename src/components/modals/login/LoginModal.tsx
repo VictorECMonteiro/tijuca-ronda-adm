@@ -26,6 +26,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ fecharModal }) => {
             placeholder="Digite seu CPF"
             value={cpf !== null ? cpf.toString() : ""}
             onChange={handleCPFChange}
+            autoComplete="off"
             maxLength={14}
           />
 

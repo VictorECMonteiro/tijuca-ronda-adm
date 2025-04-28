@@ -1,10 +1,18 @@
 import { ManagePage } from "../components/ManagePage";
 import { useRoutes } from "../hooks/useRoutes";
+import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import styles from "../styles/pages/Users.module.css"
+import LoginModal from "../components/modals/login/LoginModal";
 
-const Rota = () => {
-  const { rota, loading, error } = useRoutes();
+
+  export default function Rota() {
+    const [modalAberto, setModalAberto] = useState(false);
+    const { rota, loading, error } = useRoutes();
+
+    const alternarModal = () => {
+      setModalAberto(!modalAberto);
+    };
   
     if (loading) return <p>Carregando...</p>;
     if (error) return <p>{error}</p>;
@@ -22,13 +30,13 @@ const Rota = () => {
         { label: "Horário Extra", key: "horarioInicio" },
       ]}
       data={rota}
-      onAdd={() => console.log("Adicionar rota")}
+      onAdd= {alternarModal}
       onDelete={(route) => console.log("Excluir:", rota)}
     />
     </div>
+    {modalAberto ? <LoginModal fecharModal={alternarModal} /> : null}
     </div>
   );
 };
 
-export default Rota;
 

@@ -4,6 +4,7 @@ import styles from "../styles/components/Button.module.css"
 enum BotaoTamanho {
     P = "P",
     M = "M",
+    MM = "MM",
     G = "G",
     PP = "PP"
 }

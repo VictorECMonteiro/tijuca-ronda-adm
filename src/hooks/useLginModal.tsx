@@ -1,30 +1,27 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../api/Loginapi";
-import { formatCPF, removeFormatCPF } from "../utils/formatCPF";
+import { removeFormatCPF } from "../utils/formatCPF";
+import { useFormattedCPF } from "../hooks/useFormattedCPF";
 
 export const useLoginModal = () => {
-  const [cpf, setCpf] = useState<number | null>(null);
-  const [senha, setSenha] = useState<string>("");
+  const { cpf, handleCPFChange } = useFormattedCPF();
+  const [senha, setSenha] = useState("");
   const navigate = useNavigate();
 
-  const handleCPFChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const formattedCPF = formatCPF(event.target.value);
-    const numericCPF = Number(removeFormatCPF(formattedCPF)); 
-    setCpf(isNaN(numericCPF) ? null : numericCPF);
-  };
-
-  const handleSenhaChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSenha(event.target.value);
+  const handleSenhaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSenha(e.target.value);
   };
 
   const handleLogin = async () => {
-    if (cpf === null) {
+    const cpfSemFormatacao = removeFormatCPF(cpf);
+
+    if (isNaN(Number(cpfSemFormatacao))) {
       alert("CPF inválido.");
       return;
     }
 
-    const isAuthenticated = await login(cpf, senha);
+    const isAuthenticated = await login(Number(cpfSemFormatacao), senha);
 
     if (isAuthenticated) {
       navigate("/Home");

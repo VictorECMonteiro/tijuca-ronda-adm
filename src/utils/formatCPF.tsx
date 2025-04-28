@@ -1,5 +1,5 @@
-// export const formtCPF = (formtCPF: string) => {
-//     return formtCPF
+// export const formatCPF = (formatCPF: string) => {
+//     return formatCPF
 //       .replace(/\D/g, "")
 //       .replace(/^(\d{3})(\d)/, "$1.$2")
 //       .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
@@ -15,5 +15,5 @@
   };
   
   export const removeFormatCPF = (cpf: string) => {
-    return cpf.replace(/\D/g, ""); // Remove tudo que não for número
+    return cpf.replace(/\D/g, ""); 
   };

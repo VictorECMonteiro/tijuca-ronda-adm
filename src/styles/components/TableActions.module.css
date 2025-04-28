@@ -1,10 +1,9 @@
 .actions {
     display: flex;
-    margin-left: 65%;
-    gap: 80%;
-    /* background-color: brown; */
+    gap: 10%;
     z-index: 1000;
-    /* margin-left: 60%; */
+    justify-content: end;
+    
   }
   
   .actions button {
@@ -18,5 +17,5 @@
     display: block; 
     visibility: visible;
     opacity: 1;
-    /* margin-left: 50%; */
+    
   }

@@ -17,15 +17,15 @@ type Local = {
 type RondaTipoData = {
     idRonda: number;
     nomeRota: string;
-    horaInicio: string | null;
-    horaFim: string | null;
-    data: string;
-    observacao: string | null;
-    status: number;
-    idRota: number;
-    idUsuario: number;
-    retrievingLocals: Local[];
-    retrievingRoute: Rota[];
+    horaInicio?: string | null;
+    horaFim?: string | null;
+    data?: string;
+    observacao?: string | null;
+    status?: number;
+    idRota?: number;
+    idUsuario?: number;
+    retrievingLocals?: Local[];
+    retrievingRoute?: Rota[];
   };
   
 

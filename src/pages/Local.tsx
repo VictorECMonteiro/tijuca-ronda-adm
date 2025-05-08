@@ -7,19 +7,19 @@ import userPrint from "../hooks/userPrint";
 import Sidebar from "../components/Sidebar";
 import { useEffect, useState } from "react";
 import PrintLocal from "../components/PrintLocal";
+import { api } from "../api/serviceapi";
 const printLocalStyle = require("../styles/components/PrintLocal.js")
 
 const Local = () => { 
-  const { Local, loading, error } = useLocal();
+  const [reload, setReload] = useState(false)
   const [isSideOpen, setIsSideOpen] = useState(false)
+  const { Local, loading, error } = useLocal(reload);
 
   const print = async (localObject) => {
     //Variavel que recebe o retorno do Hook passando o componente junto com ID para geração do QRCode
     const content = await userPrint(<PrintLocal idLocal={localObject.idLocal} nomeLocal={localObject.nomeLocal} />);
     //Cria a janela de impressâo
     const windows: any = window.open('', '', 'width=800,height=600');
-
-
     //Cria no documento estrutura basica de funcionamento HTML para impressao
     await windows.document.write(`
         <html>
@@ -39,19 +39,33 @@ const Local = () => {
   };
 
 
+  const deleteLocal = (item: any)=>{
+    try{
+    const fresult = api.post("/local/delete", {
+      idLocal: item.idLocal
+    })
+      setReload(!reload)
+    }
+    catch(e){
+      return <h1>Erro ao excluir Local</h1>
+      console.log(e)
+    }
+
+  }
+
+
 
   if (loading) return <p>Carregando...</p>;
   if (error) return <p>{error}</p>;
 
 
   
-
   return (
     <div className={styles.coniner}>
       <div className={styles.hamburguer}>
         <button onClick={()=>{setIsSideOpen(!isSideOpen)}}>ABRIR SIDEBAR TEMP</button>
       </div>
-      <Sidebar isOpen={isSideOpen}/>
+      <Sidebar isOpen={isSideOpen} closeSide={()=> setIsSideOpen}/>
       
     <div className={styles.content}>
     <ManagePage
@@ -64,10 +78,10 @@ const Local = () => {
       data={Local}
       onAdd={() => console.log("Adicionar local")}
       // onEdit={(Local) => console.log("Editar:", Local)}
-      onDelete={(Local) => console.log("Excluir:", Local)}
+      onDelete={deleteLocal}
       onPrint={print}
+      // dataDrop={[]}
     />
-
    </div>
 </div>
   );

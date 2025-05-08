@@ -1,4 +1,8 @@
 .container {
+    width: 70vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
     padding: 20px;
     background-color: #F5F5FA;
     border-radius: 8px;
@@ -15,5 +19,20 @@
     font-size: 16px;
     color: #666;
     margin-bottom: 20px;
+    
   }
   
+
+@media (max-width: 900px){
+  body{
+    /* background-color: #123465; */
+  }
+  .container{
+    width: 100%;
+    /* background-color: red; */
+  }
+
+
+
+
+}

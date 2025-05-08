@@ -1,3 +1,8 @@
+body{
+  overflow-y: auto;
+}
+
+
 .conter {
   display: flex;
   flex-direction: column;
@@ -15,7 +20,9 @@
 }
 
 .columnLabel {
-  text-align: left;
+  text-align: center;
+  width: 100%;
+  margin-left: 5%;
 }
 
 .list {
@@ -40,7 +47,7 @@
 
 
 .item {
-  text-align: left;
+  text-align: center;
 }
 
 .statusContainer {
@@ -49,7 +56,6 @@
 }
 
 .contbut {
- display: flex;
  justify-content: end;
  /* background-color: chocolate; */
 }
@@ -67,6 +73,17 @@
   background-color: #009624;
 }
 
+@media (max-width: 900px){
+  .eader{
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  }  
+  .card{
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    padding: 5%;
+  }
+
+
+}
 
 @media (max-width:470px){
   .eader{

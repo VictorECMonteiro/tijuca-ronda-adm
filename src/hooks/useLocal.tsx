@@ -6,7 +6,7 @@ type Local = {
   nomeLocal: string;
 };
 
-export const useLocal = () => {
+export const useLocal = (reload:any) => {
   const [Local, setLocal] = useState<Local[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -26,7 +26,7 @@ export const useLocal = () => {
     };
 
     fetchLocal();
-  }, []);
+  }, [reload]);
 
   return { Local, loading, error };
 };

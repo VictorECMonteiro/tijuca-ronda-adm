@@ -7,13 +7,14 @@ import { api } from '../api/serviceapi'
 
 export function useLogSearch(list:any[]) {
     const [result, setResult] = useState([])
-    const [idRondaList, setIdRondaList] = useState<any[]>([])
+    // const [idRondaList, setIdRondaList] = useState<any[]>([])
+    let idRondaList:number[] = []
 
     for(let i=0; i<=list.length - 1; i++){
-        setIdRondaList(idRondaList => [...idRondaList,list[0].idRonda])
+        idRondaList.push(list[i].idRonda)
     }
 
-
+    
 
 
     useEffect(()=>{
@@ -38,7 +39,7 @@ export function useLogSearch(list:any[]) {
 
 
 
-
+ 
 
   return {result}
 }

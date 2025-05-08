@@ -14,6 +14,7 @@ type ManagePageProps<T extends Record<string, any>> = {
   onPrint?: (item: any)=> void;
   onClick?: (item: any)=> void;
   children?: React.ReactNode;
+  showDrop?: any | undefined
 };
 
 export const ManagePage = <T extends Record<string, any>>({
@@ -26,13 +27,13 @@ export const ManagePage = <T extends Record<string, any>>({
   onEdit,
   onDelete,
   onPrint,
-  onClick
+  onClick,
+  showDrop
 }: ManagePageProps<T>) => {
   return (
     <div className={styles.container}>
       <TableHeader title={title} description={description} />
-
-      <DataTable data={data} columns={columns} onEdit={onEdit} onDelete={onDelete} onAdd={onAdd} onPrint={onPrint} dataDrop={dataDrop} onClick={onClick}/>
+      <DataTable data={data} columns={columns} onEdit={onEdit} onDelete={onDelete} onAdd={onAdd} onPrint={onPrint} dataDrop={dataDrop} onClick={onClick} showDrop={showDrop}/>
     </div>
   );
 };

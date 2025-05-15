@@ -4,6 +4,7 @@ import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import styles from "../styles/pages/Users.module.css"
 import LoginModal from "../components/modals/login/LoginModal";
+import LoadingComponent from "../components/LoadingComponent";
 
 
   export default function Rota() {
@@ -14,7 +15,7 @@ import LoginModal from "../components/modals/login/LoginModal";
       setModalAberto(!modalAberto);
     };
   
-    if (loading) return <p>Carregando...</p>;
+    if (loading) return <LoadingComponent />;
     if (error) return <p>{error}</p>;
 
   return (

@@ -66,10 +66,10 @@ export const DataTable = <T,>({ data, columns, onEdit, onDelete, onAdd, onPrint,
                 />
               </div>
             </button>
-            {
-              showDrop === item.idRonda && dataDrop && (
-                <div className={dropStyle.container}>
-                  <div className={dropStyle.header}>
+            
+              {dataDrop&&(
+                <div className={`${showDrop === item.idRonda && dataDrop?dropStyle.container: dropStyle.close}`}>
+                  <div className={`${showDrop === item.idRonda && dataDrop?dropStyle.header:dropStyle.close}`}>
                     <span className={dropStyle.span}>Nome do Local</span>
                     <span className={dropStyle.span}>Horario Marcado</span>
                     <span className={dropStyle.span}>Usuario</span>
@@ -115,8 +115,9 @@ export const DataTable = <T,>({ data, columns, onEdit, onDelete, onAdd, onPrint,
                     ))
                   }
                 </div>
-              )
-            }
+              )}
+              
+            
 
           </div>
 

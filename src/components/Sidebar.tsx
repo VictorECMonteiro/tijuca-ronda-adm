@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Sidebar.module.css";
 import logo from '../assets/img/logo.png';
 import colapseIcon from "../assets/img/arrows-collapse-vertical.svg"
 
 import { FiUser, FiLogOut, FiHome, FiMapPin, FiMap, FiFileText } from "react-icons/fi";
+import getCookie from "../utils/getCookie";
+import writeCookie from "../utils/writeCookie";
 
 const UserIcon = FiUser as unknown as React.FC<React.SVGProps<SVGSVGElement>>;
 const LogOutIcon = FiLogOut as unknown as React.FC<React.SVGProps<SVGSVGElement>>;
@@ -13,8 +15,19 @@ const MapIcon = FiMap as unknown as React.FC<React.SVGProps<SVGSVGElement>>;
 const FileTextIcon = FiFileText as unknown as React.FC<React.SVGProps<SVGSVGElement>>;
 
 const Sidebar = ({ isOpen, closeSide }: { isOpen?: any, closeSide?: (item:any)=>any }) => {
+  const [cookies, setCookies] = useState({nomedeUsuario: "", permissao: ""})
+  useEffect(()=>{
+      let cookies = getCookie("User")
+      if(!cookies){
+        window.location.href = "/"
+      }
+      setCookies(JSON.parse(cookies))
 
+  },[])
+  const cleanCookies = ()=>{
+    writeCookie("User", "", 10000)
 
+  }
 
   return (
     <div className={isOpen || document.body.clientWidth > 470 ? styles.sidebar : styles.close}>
@@ -29,14 +42,14 @@ const Sidebar = ({ isOpen, closeSide }: { isOpen?: any, closeSide?: (item:any)=>
         <div className={styles.user2}>
           <img src="/user-avatar.png" className={styles.avatar} />
           <div className={styles.texto}>
-            <p className={styles.username}>KETELY</p>
-            <p className={styles.userId}>62182737376</p>
+            <p className={styles.username}>{cookies.nomedeUsuario}</p>
+            <p className={styles.userId}>{cookies.permissao}</p>
           </div>
         </div>
       </div>
 
       <div className={styles.menu}>
-        <a href="/" className={styles.menuItem1}>
+        <a href="/" className={styles.menuItem1} onClick={()=>{cleanCookies()}}>
           <LogOutIcon className={styles.icone} />
           <h1 className={styles.menutext1}>
             Encerrar Sessão
@@ -68,7 +81,7 @@ const Sidebar = ({ isOpen, closeSide }: { isOpen?: any, closeSide?: (item:any)=>
         </a>
 
 
-        <a href="#" className={styles.menuItem}>
+        <a href="/Logs" className={styles.menuItem}>
           <FileTextIcon className={styles.icons} />
           <div className={styles.menutext}>
             Consultar Registros

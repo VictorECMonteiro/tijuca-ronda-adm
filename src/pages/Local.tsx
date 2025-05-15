@@ -1,13 +1,14 @@
 import { ManagePage } from "../components/ManagePage";
 import { useLocal } from "../hooks/useLocal";
 // import printLocalStyle from "../styles/components/PrintLocal.module.css"
-
-import styles from "../styles/pages/Users.module.css";
+import hamburguer from "../assets/img/list.svg"
+import styles from "../styles/pages/Logs.module.css";
 import userPrint from "../hooks/userPrint";
 import Sidebar from "../components/Sidebar";
 import { useEffect, useState } from "react";
 import PrintLocal from "../components/PrintLocal";
 import { api } from "../api/serviceapi";
+import LoadingComponent from "../components/LoadingComponent";
 const printLocalStyle = require("../styles/components/PrintLocal.js")
 
 const Local = () => { 
@@ -55,19 +56,21 @@ const Local = () => {
 
 
 
-  if (loading) return <p>Carregando...</p>;
+  if (loading) return <LoadingComponent/>;
   if (error) return <p>{error}</p>;
 
 
   
   return (
-    <div className={styles.coniner}>
+    <div className={styles.container}>
       <div className={styles.hamburguer}>
-        <button onClick={()=>{setIsSideOpen(!isSideOpen)}}>ABRIR SIDEBAR TEMP</button>
+        <a onClick={()=>{setIsSideOpen(!isSideOpen)}} className={styles.sideButton}>
+          <img src={hamburguer} alt="" />
+        </a>
       </div>
-      <Sidebar isOpen={isSideOpen} closeSide={()=> setIsSideOpen}/>
+      <Sidebar isOpen={isSideOpen} closeSide={setIsSideOpen}/>
       
-    <div className={styles.content}>
+    <div className={styles.table}>
     <ManagePage
       title="Gerenciar Locais"
       description="Adicione novos locais para sua ronda"

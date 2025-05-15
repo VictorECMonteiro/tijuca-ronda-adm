@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../api/Loginapi";
 import { removeFormatCPF } from "../utils/formatCPF";
 import { useFormattedCPF } from "../hooks/useFormattedCPF";
+import writeCookie from "../utils/writeCookie";
+
 
 export const useLoginModal = () => {
   const { cpf, handleCPFChange } = useFormattedCPF();
@@ -22,8 +24,9 @@ export const useLoginModal = () => {
     }
 
     const isAuthenticated = await login(Number(cpfSemFormatacao), senha);
-
-    if (isAuthenticated) {
+    console.log(isAuthenticated)
+    if (isAuthenticated.success === true && isAuthenticated.status != 0 && isAuthenticated.permissao === "admin") {
+      writeCookie("User", JSON.stringify(isAuthenticated), 2000)
       navigate("/Home");
     } else {
       alert("Falha no login. Verifique seu CPF e senha.");

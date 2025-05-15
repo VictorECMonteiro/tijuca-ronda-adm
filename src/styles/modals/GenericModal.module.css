@@ -40,13 +40,15 @@
     justify-content: start;
     flex-direction: column;
     font-size: 1.2rem;
-    color: #292929;
+    /* color: #292929; */
     font-family: "Poppins";
     font-weight: 600;
     margin-left: 3vw;
     margin-top: 10vh;
     /* border: 1px solid blue;
     background-color: red; */
+    /* color: red; */
+    /* background-color: red;/ */
 }
 .form{
     width: 80%;
@@ -121,11 +123,11 @@
 .Botao{
     margin-top: 2%;
     /* background-color:aqua; */
+    width: 50%;
+    margin-left: 10%;
     color: #000;
     border: none;
-    -webkit-box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
-    -moz-box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
-    box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
+
 }
 
 .selectcont{
@@ -165,6 +167,7 @@
         /* background-color: red; */
         width: auto;
         /* border: 1px solid blue; */
+        
     }
 
     .Hum {

@@ -1,0 +1,58 @@
+.loadContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 2s infinite;
+    margin: auto;
+    margin-top: 20%;
+    border-radius: 50%;
+    width: 20vw;
+    height: 20vw;
+    background-color: #F5A802;
+    animation-timing-function: cubic-bezier(0,.47,.68,.58);
+    /* margin-top: 25%; */
+
+    
+}
+.blueRing{
+    width: 9.5vw;
+    height: 18vh;
+    /* border-radius: 20%; */
+    border-radius: 50%;
+    background-color: #123465;
+    animation: rotate 1s infinite;
+    /* margin-top: 20%; */
+    /* margin: auto; */
+}
+
+
+@keyframes rotate{
+    0%{
+        transform: none;
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%{
+        transform: scale(1);
+
+    }
+    50%{
+        transform: scale(0.6);
+
+    }
+    75%{
+        transform: scale(0.8);
+
+    }
+    100%{
+        transform: scale(1);
+
+    }
+    
+}
+
+

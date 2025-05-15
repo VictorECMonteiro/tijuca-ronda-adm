@@ -43,6 +43,9 @@ export default function Logs() {
         </a>
       </div>
       <Sidebar isOpen={isSideOpen} closeSide={setIsSideOpen} />
+      {/* <div className={styles.divTeste}>
+        <Sidebar isOpen={isSideOpen} closeSide={setIsSideOpen}/>
+      </div> */}
 
       <div className={styles.table}>
 

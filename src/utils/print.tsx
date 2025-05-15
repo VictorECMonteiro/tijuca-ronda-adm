@@ -7,7 +7,7 @@ const print = async (localObject, Component, componentStyle) => {
     const content = await userPrint(Component);
     console.log(content)
     //Cria a janela de impressâo
-    const windows: any = window.open('', '', '');
+    const windows: any = window.open('', '', 'width=800,height=600');
     //Cria no documento estrutura basica de funcionamento HTML para impressao
     await windows.document.write(`
         <html>
@@ -23,7 +23,7 @@ const print = async (localObject, Component, componentStyle) => {
     //Chama a ação de print da pagina
     setTimeout(()=>{
       windows.print()
-    }, 500)
+    }, 1000)
   };
 
 export default print

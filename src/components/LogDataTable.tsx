@@ -1,10 +1,10 @@
 import React from 'react'
 import { useLogData } from '../hooks/useLogData'
-
-
+import retornarHorasComTolerancia from "../utils/retornaHorasComTolerancia"
+import compararHora from '../utils/compararHora'
 export default function LogDataTable({data, showDrop}) {
 
-  if(data.length - 1 === 0){
+  if(data.length === 0){
     return <div><h1>Sem Dados</h1></div>
   }
 
@@ -13,8 +13,7 @@ export default function LogDataTable({data, showDrop}) {
     <div id='container'>
         <header id='header'>
             <div id='d1'>
-                <img src="" alt="" />
-                <h1>
+                <h1 id='h1'>
                     Tijuca <br />
                     Ronda
                 </h1>
@@ -50,7 +49,7 @@ export default function LogDataTable({data, showDrop}) {
                                     <div id='contentItem'>{item.nomeLocal}</div>
                                     <div id='contentItem'>{item.hora}</div>
                                     <div id='contentItem'>{item.data}</div>                
-                                    <div id='contentItem'>AAAA</div>
+                                    <div id='contentItem'>{compararHora(retornarHorasComTolerancia(item.horario, 10), item.hora)?"Sem Observações":"Atrasado"}</div>
                     </div>
                 ))}
         </div>        

@@ -30,7 +30,9 @@ const GenericModal: React.FC<GenericModalProps> = ({
 
           
         </form>
-        <Button title={buttonText} script={onSubmit} tamanho="MM" className={styles.Botao} />
+        <div className={styles.Botao}>
+        <Button title={buttonText} script={onSubmit} tamanho="MM"  />
+        </div>
 
          <div className={styles.svgdiv}>
          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

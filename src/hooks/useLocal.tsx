@@ -6,6 +6,7 @@ type LocalType = {
   nomeLocal: string;
 };
 
+
 export const useLocal = () => {
   const [Local, setLocal] = useState<LocalType[]>([]);
   const [loading, setLoading] = useState(true);
@@ -36,7 +37,7 @@ export const useLocal = () => {
 
   useEffect(() => {
     fetchLocal();
-  }, []);
+  }, [reload]);
 
   console.log("Retorno da API Local:", Local);
 

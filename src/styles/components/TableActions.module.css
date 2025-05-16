@@ -3,7 +3,7 @@
     gap: 10%;
     z-index: 1000;
     justify-content: end;
-    
+    cursor: pointer;
   }
   
   .actions button {
@@ -17,5 +17,5 @@
     display: block; 
     visibility: visible;
     opacity: 1;
-    
+    cursor: pointer;
   }

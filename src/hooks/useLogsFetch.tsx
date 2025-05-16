@@ -48,7 +48,7 @@ export const useLogsFetch = ()=>{
   useEffect(() => {
     const fetchLocal = async () => {
       try {
-        const response = await api.get("/ronda/createAndReturn"); 
+        const response = await api.get("/ronda/findAll"); 
         setLocal(response.data);
       } catch (err) {
         setError("Erro ao carregar locais");

@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { ManagePage } from "../components/ManagePage";
 import Sidebar from "../components/Sidebar";
-import styles from "../styles/pages/Users.module.css";
+// import styles from "../styles/pages/Users.module.css";
+import styles from "../styles/pages/Logs.module.css"
 import UserCreateModal from "../components/modals/login/UserCreateModal";
 import { fetchUsers as fetchUsersFromService } from "../api/userService";
 import { api } from "../api/serviceapi";
+import hamburguer from "../assets/img/list.svg"
+import LoadingComponent from "../components/LoadingComponent";
 
 type User = {
   idUsuario: number;
@@ -18,7 +21,12 @@ const Users = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [isSideOpen, setIsSideOpen] = useState(false)
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   const fetchAndSetUsers = async () => {
     try {
@@ -55,13 +63,20 @@ const Users = () => {
     { label: "Status", key: "status" },
   ];
 
-  if (loading) return <p>Carregando...</p>;
+  if (loading) return <LoadingComponent/>;
   if (error) return <p>{error}</p>;
 
   return (
-    <div className={styles.coniner}>
-      <Sidebar />
-      <div className={styles.content}>
+    <div className={styles.container}>
+        <div className={styles.hamburguer}>
+              <a onClick={() => setIsSideOpen(!isSideOpen)} className={styles.sideButton}>
+                <img src={hamburguer} alt="" />
+              </a>
+        </div>
+      <div className={styles.divTeste}>
+        <Sidebar isOpen={isSideOpen} closeSide={setIsSideOpen}/>
+      </div>
+      <div className={styles.table}>
         <ManagePage<User>
           title="Gerenciar Usuários"
           description="Crie, edite e modifique usuários"

@@ -2,9 +2,11 @@ import { ManagePage } from "../components/ManagePage";
 import { useRoutes } from "../hooks/useRoutes";
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
-import styles from "../styles/pages/Users.module.css";
-// import RotaModal from "../components/modals/RotaModal";
+
+import styles from "../styles/pages/Users.module.css"
+import LoadingComponent from "../components/LoadingComponent";
 import CreateRouteModal from "../components/modals/CreateRouteModal";
+
 
 export default function Rota() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,8 +17,13 @@ export default function Rota() {
     window.location.reload();
   };
 
-  if (loading) return <p>Carregando...</p>;
-  if (error) return <p>{error}</p>;
+    const alternarModal = () => {
+      setModalAberto(!modalAberto);
+    };
+  
+    if (loading) return <LoadingComponent />;
+    if (error) return <p>{error}</p>;
+
 
   return (
     <div className={styles.coniner}>

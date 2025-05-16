@@ -1,0 +1,50 @@
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+  } 
+
+  .input {
+    margin-bottom: 30vh;
+   } 
+   
+  .input1{
+    padding: 0px 0px 0px 10px;
+    height: 6vh;
+    border-radius: 5px;
+    border: none;
+    -webkit-box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
+    -moz-box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
+    box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
+   
+}
+
+.input1::placeholder{
+    font-family: "Poppins";
+    margin-top: 1vh;
+    font-weight: 600;
+    font-size: 1.3vh;
+    /* background-color: aquamarine; */
+}
+
+  .inputGroup label{
+      margin-top: 1vh;    
+      font-weight: 500;
+      padding-left: 2vh;
+      font-size: 1.5vh;
+      font-family: "Poppins";
+      /* background-color: aqua; */
+  
+  }
+
+  .form{
+    width: 0%;
+    height: 55%;
+    justify-content: start;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 7%;
+    z-index: 2;
+   
+    /* border: 1px solid blue; */
+}

@@ -1,6 +1,6 @@
 import { useUserCreate } from "../../../hooks/useUserCreate";
 import GenericModal from "../GenericModal";
-import styles from "../../../styles/modals/GenericModal.module.css";
+import styles from "../../../styles/modals/UserCreateModal.module.css";
 import { useState } from "react";
 import { api } from "../../../api/serviceapi";
 
@@ -8,7 +8,8 @@ const UserCreateModal = ({ onClose, onSuccess }) => {
   const { cpf, handleCPFChange, setCpf } = useUserCreate();
   const [nome, setNome] = useState("");
   const [senha, setSenha] = useState("");
-  const [permissao, setPermissao] = useState("");
+  const [permissao, setPermissao] = useState("vigia");
+  const [error, setError] = useState("");
 
   const handleSubmit = async () => {
     try {
@@ -20,28 +21,34 @@ const UserCreateModal = ({ onClose, onSuccess }) => {
       });
 
       if (response.status === 200 || response.status === 201) {
-        onSuccess(); 
-        onClose();  
-        setCpf(""); 
+        setCpf("");
         setNome("");
         setSenha("");
-        setPermissao("vigia");
+        setPermissao("");
+        onSuccess();
+        onClose();
       }
     } catch (error) {
       console.error("Erro ao criar usuário:", error);
+      setError("Erro ao criar usuário. Verifique os dados e tente novamente.");
     }
   };
+
   return (
     <GenericModal
       titlee="Criar novo usuário"
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonText="Cadastrar usuário"
+      buttonTam="MM"
+      buttonText="Criar usuário"
     >
+      {error && <p className={styles.error}>{error}</p>}
+
       <div className={styles.input}>
         <div className={styles.inputGroup}>
           <label>CPF do usuário</label>
           <input
+            className={styles.input1}
             type="text"
             placeholder="Digite o CPF"
             value={cpf}
@@ -54,6 +61,7 @@ const UserCreateModal = ({ onClose, onSuccess }) => {
         <div className={styles.inputGroup}>
           <label>Nome do usuário</label>
           <input
+            className={styles.input1}
             type="text"
             placeholder="Digite o nome"
             value={nome}
@@ -64,6 +72,7 @@ const UserCreateModal = ({ onClose, onSuccess }) => {
         <div className={styles.inputGroup}>
           <label>Senha do usuário</label>
           <input
+            className={styles.input1}
             type="password"
             placeholder="Digite a senha"
             value={senha}
@@ -71,10 +80,10 @@ const UserCreateModal = ({ onClose, onSuccess }) => {
           />
         </div>
 
-        <div className={styles.selectcont}>
+        <div className={styles.selectcont2}>
           <label>Função</label>
           <select
-            className={styles.select}
+            className={styles.select2}
             value={permissao}
             onChange={(e) => setPermissao(e.target.value)}
           >

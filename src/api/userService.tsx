@@ -1,13 +1,27 @@
-import axios from "axios";
 
-const API_LIST = "http://192.168.9.249:9010";
+import { api } from './serviceapi';
 
 export const fetchUsers = async () => {
   try {
-    const response = await axios.get(`${API_LIST}/login/listUsers`);
+    const response = await api.get('/login/listUsers');
     return response.data;
   } catch (error) {
-    console.error("Erro ao buscar usuários:", error);
+    console.error('Erro ao buscar usuários:', error);
     return [];
   }
+};
+
+export const fetchLocais = async () => {
+  try {
+    const response = await api.get('/local/list');
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao buscar locais:', error);
+    return [];
+  }
+};
+
+export const createRoute = async (payload: any) => {
+  const { data } = await api.post('/rota/create', payload);
+  return data;
 };

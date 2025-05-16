@@ -3,10 +3,16 @@ import styles from "../styles/components/Button.module.css"
 
 enum BotaoTamanho {
     P = "P",
+    PP = "PP",
+    PPP = "PPP",
+    PPPP = "PPPP",
+    Pa = "Pa",
+    PA = "PA",
+    PAA = "PAA",
     M = "M",
     MM = "MM",
     G = "G",
-    PP = "PP"
+
 }
 
 interface ButtonProps {

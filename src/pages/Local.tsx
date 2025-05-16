@@ -9,13 +9,16 @@ import { useEffect, useState } from "react";
 import PrintLocal from "../components/PrintLocal";
 import { api } from "../api/serviceapi";
 import LoadingComponent from "../components/LoadingComponent";
+import ModalLocal from "../components/modals/ModalLocal";
+// import { useModalLocal } from "../hooks/useModalLocal"
+
 const printLocalStyle = require("../styles/components/PrintLocal.js")
 
 const Local = () => { 
   const [reload, setReload] = useState(false)
   const [isSideOpen, setIsSideOpen] = useState(false)
   const { Local, loading, error } = useLocal(reload);
-
+  const [isModalOpen, setIsModalOpen] = useState(false); 
   const print = async (localObject) => {
     //Variavel que recebe o retorno do Hook passando o componente junto com ID para geração do QRCode
     const content = await userPrint(<PrintLocal idLocal={localObject.idLocal} nomeLocal={localObject.nomeLocal} />);
@@ -57,6 +60,7 @@ const Local = () => {
 
 
   if (loading) return <LoadingComponent/>;
+
   if (error) return <p>{error}</p>;
 
 
@@ -79,12 +83,18 @@ const Local = () => {
         { label: "IdLocal", key: "idLocal" },
       ]}
       data={Local}
-      onAdd={() => console.log("Adicionar local")}
+      onAdd={() => setIsModalOpen(true)} 
       // onEdit={(Local) => console.log("Editar:", Local)}
       onDelete={deleteLocal}
       onPrint={print}
       // dataDrop={[]}
     />
+
+{isModalOpen && (
+  <ModalLocal
+    onClose={() => setIsModalOpen(false)}
+  />
+)}
    </div>
 </div>
   );

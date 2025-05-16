@@ -122,7 +122,6 @@ export const DataTable = <T,>({ data, columns, onEdit, onDelete, onAdd, onPrint,
           </div>
 
         ))}
-
       </div>
     </div>
   );

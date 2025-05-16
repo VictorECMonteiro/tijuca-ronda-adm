@@ -7,6 +7,7 @@ interface GenericModalProps {
   children: React.ReactNode;
   onClose: () => void;
   onSubmit: () => void;
+  buttonTam: "P" | "M" | "MM" | "G" | "PP" | "PPP" | "PPPP" | "Pa" | "PA";
   buttonText: string;
 }
 
@@ -15,6 +16,7 @@ const GenericModal: React.FC<GenericModalProps> = ({
   children,
   onClose,
   onSubmit,
+  buttonTam,
   buttonText,
 }) => {
   return (
@@ -25,14 +27,15 @@ const GenericModal: React.FC<GenericModalProps> = ({
           <h1 className={styles.Hum}>{titlee}</h1>
         </header>
 
-        <form className={styles.form} onSubmit={(e) => { e.preventDefault(); onSubmit(); }}>
+        <form className={styles.form} onSubmit={(e) => { e.preventDefault()}}>
           {children}
 
           
         </form>
         <div className={styles.Botao}>
-        <Button title={buttonText} script={onSubmit} tamanho="MM"  />
+          <Button title={buttonText} script={onSubmit} tamanho="MM"  />
         </div>
+
 
          <div className={styles.svgdiv}>
          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -48,3 +51,4 @@ const GenericModal: React.FC<GenericModalProps> = ({
 };
 
 export default GenericModal;
+  

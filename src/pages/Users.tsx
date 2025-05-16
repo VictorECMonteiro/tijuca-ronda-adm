@@ -25,8 +25,6 @@ const Users = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); 
   const [isSideOpen, setIsSideOpen] = useState(false)
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
 
   const fetchAndSetUsers = async () => {
     try {

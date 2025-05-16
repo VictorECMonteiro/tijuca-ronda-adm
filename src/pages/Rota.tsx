@@ -17,10 +17,6 @@ export default function Rota() {
     window.location.reload();
   };
 
-    const alternarModal = () => {
-      setModalAberto(!modalAberto);
-    };
-  
     if (loading) return <LoadingComponent />;
     if (error) return <p>{error}</p>;
 

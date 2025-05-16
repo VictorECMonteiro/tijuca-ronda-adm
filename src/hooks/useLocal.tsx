@@ -7,7 +7,7 @@ type LocalType = {
 };
 
 
-export const useLocal = () => {
+export const useLocal = (reload?:any) => {
   const [Local, setLocal] = useState<LocalType[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

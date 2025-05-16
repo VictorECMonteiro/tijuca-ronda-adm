@@ -44,7 +44,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ fecharModal }) => {
             <label htmlFor="manterConectado">Manter-me conectado?</label>
           </div>
 
-          <Button title="Entrar" script={handleLogin} tamanho="P" className={styles.Botao} />
+          <Button title="Entrar" script={handleLogin} tamanho="M" className={styles.Botao} />
         </form>
         <div className={styles.svgdiv}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 400">

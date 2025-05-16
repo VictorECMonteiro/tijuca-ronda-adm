@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.tituloheader{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    font-size: 1.2rem;
+    color: #292929;
+    font-family: "Poppins";
+    font-weight: 600;
+    margin-left: 3vw;
+    margin-top: 10vh;
+    /* border: 1px solid blue;
+    background-color: red; */
+}
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.input1{
+    padding: 0px 0px 0px 10px;
+    height: 6vh;
+    border-radius: 5px;
+    border: none;
+    -webkit-box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
+    -moz-box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
+    box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
+   
+}
+
+.input1::placeholder{
+    font-family: "Poppins";
+    margin-top: 1vh;
+    font-weight: 600;
+    font-size: 1.3vh;
+    /* background-color: aquamarine; */
+}
+.inputGroup label{
+    margin-top: 1vh;    
+    font-weight: 500;
+    padding-left: 2vh;
+    font-size: 1.5vh;
+    font-family: "Poppins";
+    /* background-color: aqua; */
+
+}
+.Botao{
+    margin-top: 2%;
+    z-index: 10;
+    /* background-color:aqua; */
+    color: #000;
+    border: none;
+    -webkit-box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
+    -moz-box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
+    box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
+}
+
+.selectcont2{
+    display: flex;
+    flex-direction: column;   
+}
+
+.select2 {
+    border: none;
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
+    -moz-box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
+    box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
+    width: 40%;
+    height: 4vh;
+    background-color: #fff;
+}
+.error {
+    color: red;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  

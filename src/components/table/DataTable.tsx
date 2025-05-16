@@ -38,33 +38,34 @@ export const DataTable = <T,>({ data, columns, onEdit, onDelete, onAdd, onPrint,
       </div>
 
       <div className={styles.list}>
-        {data.map((item, index) => (
-          <div>
-          <button key={index} className={styles.card} onClick={()=>{onClick?.(true)}} >
-            {columns.map((col) => (
-              <span key={col.key.toString()} className={styles.item}>
-                {item[col.key] as string}
-              </span>
-            ))}
-            <div>
-            <TableActions
-              onEdit={onEdit ? () => onEdit(item) : undefined}
-              onDelete={onDelete ? () => onDelete(item) : undefined}
-              onPrint={onPrint ? ()=> onPrint(item): undefined}
-            />
-            </div>
-          </button>
-          <div>
-            
-            {(dataDrop &&(
-                dataDrop.map((item2)=>(
-                  item.idRonda === item2.idRonda &&(
-                  <h1>{item2.nomeLocal}</h1>)
-                ))
-            ))}
-            </div>
-          </div>
-        ))}
+      {data.map((item, index) => (
+  <div key={item.id || index}>
+    <button className={styles.card} onClick={() => onClick?.(true)}>
+      {columns.map((col) => (
+        <span key={col.key.toString()} className={styles.item}>
+          {item[col.key] as string}
+        </span>
+      ))}
+      <div>
+        <TableActions
+          onEdit={onEdit ? () => onEdit(item) : undefined}
+          onDelete={onDelete ? () => onDelete(item) : undefined}
+          onPrint={onPrint ? () => onPrint(item) : undefined}
+        />
+      </div>
+    </button>
+
+    <div>
+      {dataDrop &&
+        dataDrop.map((item2, idx) =>
+          item.idRonda === item2.idRonda ? (
+            <h1 key={idx}>{item2.nomeLocal}</h1>
+          ) : null
+        )}
+    </div>
+  </div>
+))}
+
         
       </div>
     </div>

@@ -3,10 +3,11 @@ import { ManagePage } from "../components/ManagePage";
 import Sidebar from "../components/Sidebar";
 import styles from "../styles/pages/Users.module.css";
 import UserCreateModal from "../components/modals/login/UserCreateModal";
+import { fetchUsers as fetchUsersFromService } from "../api/userService";
 import { api } from "../api/serviceapi";
 
 type User = {
-  id: number;
+  idUsuario: number;
   nomedeUsuario: string;
   permissao: string;
   cpf: string;
@@ -17,13 +18,13 @@ const Users = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const fetchUsers = async () => {
+  const fetchAndSetUsers = async () => {
     try {
       setLoading(true);
-      const response = await api.get("/login/listUsers");
-      setUsers(response.data);
+      const data = await fetchUsersFromService();
+      setUsers(data);
     } catch (err) {
       setError("Erro ao carregar usuários");
     } finally {
@@ -32,8 +33,20 @@ const Users = () => {
   };
 
   useEffect(() => {
-    fetchUsers();
+    fetchAndSetUsers();
   }, []);
+
+  const handleDeleteUser = async (user: User) => {
+    try {
+      await api.delete(`/login/deleteUser/${user.idUsuario}`);
+      setUsers((prevUsers) =>
+        prevUsers.filter((u) => u.idUsuario !== user.idUsuario)
+      );
+    } catch (err) {
+      console.error("Erro ao deletar usuário:", err);
+      alert("Erro ao deletar usuário. Tente novamente.");
+    }
+  };
 
   const columns: { label: string; key: keyof User }[] = [
     { label: "Nome", key: "nomedeUsuario" },
@@ -54,15 +67,14 @@ const Users = () => {
           description="Crie, edite e modifique usuários"
           columns={columns}
           data={users}
-          onAdd={() => setIsModalOpen(true)} 
+          onAdd={() => setIsModalOpen(true)}
           onEdit={() => console.log("Editar usuário")}
-          onDelete={() => console.log("Deletar")}
+          onDelete={handleDeleteUser}
         />
-
         {isModalOpen && (
           <UserCreateModal
             onClose={() => setIsModalOpen(false)}
-            onSuccess={fetchUsers} 
+            onSuccess={fetchAndSetUsers}
           />
         )}
       </div>

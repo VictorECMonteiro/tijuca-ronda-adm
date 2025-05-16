@@ -1,4 +1,4 @@
-// hooks/useFormattedCPF.ts
+
 import { useState } from "react";
 import { formatCPF } from "../utils/formatCPF";
 

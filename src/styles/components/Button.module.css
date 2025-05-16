@@ -22,6 +22,85 @@
     text-transform: capitalize;
     white-space: nowrap;
 }
+
+.P h1{
+    font-size: 1.5vh;
+}
+.P {
+    font-size: 10px;
+    width: 37%;
+    height: 6vh;
+    border-radius: 1vh;
+    border:  none;
+}
+
+.PP {
+    font-size: 18px;
+    width: 8vw;
+    height: 4vh;
+    border-radius: 1vh;
+    border:  none;
+}
+
+.PPP {
+    margin-bottom: -100px;
+    margin-left: 55px;
+    width: 200px;
+    height: 13vh;
+    background-color: #fff;
+    border-radius: 1vh;
+    border:  none;
+    color: #000;
+    z-index: 8;
+}
+
+.PPP h1{
+    font-size: 1.5vh;
+}
+
+.PPPP {
+    margin-top: 6vh;
+    margin-left: 3vw;
+    width: 10vw;
+    height: 17vh;
+    background-color: #fff;
+    border-radius: 1vh;
+    border:  none;
+    color: #000;
+    z-index: 8;
+}
+
+.PPPP h1{
+    font-size: 1.5vh;
+}
+
+.PA {
+    /* margin-top: 25vh; */
+    height: 20vh;
+    margin-left: 55px;
+    width: 200px;
+    background-color: #fff;
+    border-radius: 1vh;
+    border:  none;
+    color: #000;
+    z-index: 8;
+}
+
+.PA h1{
+    font-size: 1.5vh;
+}
+
+.PAA h1{
+    font-size: 1.5vh;
+}
+.PAA {
+    font-size: 10px;
+    width: 9vw;
+    /* height: vh; */
+    border-radius: 1vh;
+    border:  none;
+}
+
 .M{
     width: 23vw;
     height: 8vh;
@@ -48,24 +127,6 @@
     
 }
 
-.PP {
-    font-size: 18px;
-    width: 8vw;
-    height: 4vh;
-    border-radius: 1vh;
-    border:  none;
-}
-
-.P h1{
-    font-size: 1.5vh;
-}
-.P {
-    font-size: 10px;
-    width: 200px;
-    height: 6vh;
-    border-radius: 1vh;
-    border:  none;
-}
 .G {
     background-color: #123465;
     width: 35vw;

@@ -44,7 +44,9 @@ const Users = () => {
 
   const handleDeleteUser = async (user: User) => {
     try {
-      await api.delete(`/login/deleteUser/${user.idUsuario}`);
+      await api.post(`/login/deactivate`, {
+        idUsuario: user.idUsuario
+      });
       setUsers((prevUsers) =>
         prevUsers.filter((u) => u.idUsuario !== user.idUsuario)
       );

@@ -11,24 +11,24 @@ export function useLogData(idRonda:any){
     console.log("ESTOU SENDO EXECUTADO")
     useEffect(()=>{
         async function post(){
-            try{
+        try{
+            if(idRonda === 0){
+                setResult([])
+            }
             const fresult:any = await api.post("/geral/logData", {
                 idRonda: idRonda
             })
             console.log(fresult)
-            setResult(fresult.data)
-            
+            setResult(fresult.data) 
         }
         catch(E){
             setResult([])
-      
         }
         finally{
             setLoading(false)
         }
         }
         post()
-
     },[idRonda])
 
 

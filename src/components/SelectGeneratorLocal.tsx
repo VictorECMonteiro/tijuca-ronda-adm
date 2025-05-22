@@ -44,7 +44,7 @@ const SelectGeneratorLocal: React.FC<SelectGeneratorProps> = ({ list, selectedAr
         ))}
       </select>
       </div>
-      <Button title="Entrar" script={onClickAdd} tamanho="P" className={styles.createRouteAddButton} />
+      <Button title="Adicionar Rota " script={onClickAdd} tamanho="P" className={styles.createRouteAddButton} />
      
     </div>
   );

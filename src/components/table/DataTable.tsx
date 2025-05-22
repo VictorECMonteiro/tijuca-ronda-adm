@@ -17,6 +17,7 @@ type DataTableProps<T> = {
   data: any[];
   dataDrop?: any[] | undefined;
   columns: Column<T>[];
+  columnsDrop?: any[];
   onEdit?: (item: T) => void;
   onDelete?: (item: T) => void;
   onAdd?: () => void;
@@ -26,10 +27,10 @@ type DataTableProps<T> = {
 };
 
 
-export const DataTable = <T,>({ data, columns, onEdit, onDelete, onAdd, onPrint, dataDrop, onClick, showDrop }: DataTableProps<T>) => {
+export const DataTable = <T,>({ data, columns, onEdit, onDelete, onAdd, onPrint, dataDrop, onClick, showDrop, columnsDrop }: DataTableProps<T>) => {
 
 
-
+  console.log(dataDrop)
 
 
   return (
@@ -49,10 +50,13 @@ export const DataTable = <T,>({ data, columns, onEdit, onDelete, onAdd, onPrint,
       </div>
 
       <div className={styles.list}>
+        
         {data.map((item, index) => (
           <div>
-            <button key={index} className={styles.card} onClick={() => { onClick?.(item.idRonda) }} >
-              {columns.map((col) => (
+            <button key={index} className={styles.card} onClick={() => { onClick?.(item.idRonda||item.idRota) }} >
+              {
+              columns.map((col) => (
+                
                 <span key={col.key.toString()} className={styles.item}>
                   {item[col.key] as string}
                 </span>
@@ -68,39 +72,60 @@ export const DataTable = <T,>({ data, columns, onEdit, onDelete, onAdd, onPrint,
             </button>
             
               {dataDrop&&(
-                <div className={`${showDrop === item.idRonda && dataDrop?dropStyle.container: dropStyle.close}`}>
-                  <div className={`${showDrop === item.idRonda && dataDrop?dropStyle.header:dropStyle.close}`}>
-                    <span className={dropStyle.span}>Nome do Local</span>
+                <div className={`${showDrop === item?.idRonda || showDrop === item?.idRota&& dataDrop?dropStyle.container: dropStyle.close}`}>
+                  
+                  <div className={`${showDrop === item?.idRonda || showDrop === item?.idRota && dataDrop?dropStyle.header:dropStyle.close}`}>
+                    
+                    {columnsDrop?.map((col) => (
+                      <span key={col.key.toString()} className={dropStyle.span}>
+                        {col.key as string}
+                    </span>
+                    
+                    ))}
+
+
+                    
+                    {/* <span className={dropStyle.span}>Nome do Local</span>
                     <span className={dropStyle.span}>Horario Marcado</span>
                     <span className={dropStyle.span}>Usuario</span>
                     <span className={dropStyle.span}>Localizacao</span>
                     <span className={dropStyle.span}>Data</span>
-                    <div className={dropStyle.span}>
+                     */}
+
+                     {onPrint&&(<div className={dropStyle.span}>
                       <a className={dropStyle.print}><img src={Journal} alt="" onClick={() => onPrint(item.idRonda)} /></a>
-                    </div>
+                    </div>)}
                   </div>
                   {
                     dataDrop.map((item2) => (
-                      item2.idRonda === item.idRonda ?
+                      item2?.idRonda === item.idRonda || item2?.idRota === item.idRota?
                         <div className={dropStyle.content}>
+
+
                           <span className={dropStyle.span}>
                             {
-                              item2.nomeLocal
+                              item2?.nomeLocal
                             }
                           </span>
                           <span className={dropStyle.span}>
-                            {item2.hora}
+                            {item2?.hora}
                           </span>
+
+                          {item2?.horario&&(
+                            <span className={dropStyle.span}>
+                            {item2?.horario}
+                            </span>)}
                           <span className={dropStyle.span}>
                             {
                               item2.nomedeUsuario
                             }
                           </span>
                           <div className={dropStyle.span}>
-                            {
+                            {(item2?.latitude&&
                               <a href={`https://maps.google.com/?q=${dataDrop.find((item2) => item2.idRonda === item.idRonda)?.latitude},${dataDrop.find((item2) => item2.idRonda === item.idRonda)?.longitude}`} target="blank" className={dropStyle.button}>
                                 <img src={Pointer} alt="" />
                               </a>
+                              )
                             }
 
                           </div>
@@ -110,6 +135,7 @@ export const DataTable = <T,>({ data, columns, onEdit, onDelete, onAdd, onPrint,
                             }
                           </span>
                           <span className={dropStyle.span}></span>
+                          
                         </div> :
                         ""
                     ))

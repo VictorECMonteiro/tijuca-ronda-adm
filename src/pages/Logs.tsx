@@ -56,6 +56,13 @@ export default function Logs() {
             { label: "Nome da Rota", key: "nomeRota" },
             { label: "id da Ronda", key: "idRonda" }
           ]}
+          columnsDrop={[
+            {label: "Nome do Local", key: "Nome do Local"},
+            {label: "Horario Registrado", key: "Horario Registrado"},
+            {label: "Usuario", key:"Usuario"},
+            {label: "Localização", key:"Localização"},
+            {label:"Data", key:"Data"}
+          ]}
           description="Clique para gerar e imprimir relatórios"
           dataDrop={result}
           // onPrint={()=>{console.log("TESTE")}}

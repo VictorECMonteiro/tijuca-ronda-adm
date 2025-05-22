@@ -6,6 +6,7 @@ type ManagePageProps<T extends Record<string, any>> = {
   title: string;
   description: string;
   columns: { label: string; key: keyof T }[];
+  columnsDrop?: { label: string; key: string }[];
   data: T[];
   dataDrop?: any,
   onAdd?: () => void;
@@ -21,6 +22,7 @@ export const ManagePage = <T extends Record<string, any>>({
   title,
   description,
   columns,
+  columnsDrop,
   data,
   dataDrop,
   onAdd,
@@ -33,7 +35,7 @@ export const ManagePage = <T extends Record<string, any>>({
   return (
     <div className={styles.container}>
       <TableHeader title={title} description={description} />
-      <DataTable data={data} columns={columns} onEdit={onEdit} onDelete={onDelete} onAdd={onAdd} onPrint={onPrint} dataDrop={dataDrop} onClick={onClick} showDrop={showDrop}/>
+      <DataTable data={data} columns={columns} columnsDrop={columnsDrop} onEdit={onEdit} onDelete={onDelete} onAdd={onAdd} onPrint={onPrint} dataDrop={dataDrop} onClick={onClick} showDrop={showDrop}/>
     </div>
   );
 };

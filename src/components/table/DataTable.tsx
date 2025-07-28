@@ -12,6 +12,7 @@ type DataTableProps<T> = {
   data: T[];
   dataDrop?: any[];
   columns: Column<T>[];
+  columnsDrop?: any[];
   onEdit?: (item: T) => void;
   onDelete?: (item: T) => void;
   onAdd?: () => void;

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../api/Loginapi";
 import { removeFormatCPF } from "../utils/formatCPF";
 import { useFormattedCPF } from "../hooks/useFormattedCPF";
+import writeCookie from "../utils/writeCookie";
+
 
 export const useLoginModal = () => {
   const { cpf, handleCPFChange } = useFormattedCPF();

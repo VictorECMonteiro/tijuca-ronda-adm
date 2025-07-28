@@ -86,7 +86,8 @@
 import { useState, useEffect } from "react";
 import { ManagePage } from "../components/table/ManagePage";
 import Sidebar from "../components/Sidebar";
-import styles from "../styles/pages/Users.module.css";
+// import styles from "../styles/pages/Users.module.css";
+import styles from "../styles/pages/Logs.module.css"
 import UserCreateModal from "../components/modals/login/UserCreateModal";
 import { fetchUsers as fetchUsersFromService } from "../api/userService";
 import { api } from "../api/serviceapi";
@@ -104,7 +105,10 @@ const Users = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [isSideOpen, setIsSideOpen] = useState(false)
+
 
   const fetchAndSetUsers = async () => {
     try {

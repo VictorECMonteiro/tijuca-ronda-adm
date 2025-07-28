@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../Button";
 import styles from "../../../styles/modals/LoginModal.module.css";
 import { useLoginModal } from "../../../hooks/useLginModal";
@@ -9,6 +9,21 @@ interface LoginModalProps {
 
 const LoginModal: React.FC<LoginModalProps> = ({ fecharModal }) => {
   const { cpf, senha, handleCPFChange, handleSenhaChange, handleLogin } = useLoginModal();
+  const [error, setError] = useState("");
+
+  const handleSubmit = async () => {
+    if (!cpf || !senha) {
+      setError("Preencha CPF e senha.");
+      return;
+    }
+
+    try {
+      await handleLogin(); // handleLogin já deve lidar com erros internos
+      setError("");
+    } catch {
+      setError("Falha ao realizar login. Verifique seus dados.");
+    }
+  };
 
   return (
     <div className={styles.modalBackground} onClick={fecharModal}>
@@ -17,6 +32,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ fecharModal }) => {
           <p>Insira seus dados para</p>
           <h1>Iniciar Sessão</h1>
         </header>
+
+        {error && <p className={styles.error}>{error}</p>}
 
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
           <label htmlFor="cpf">Insira seu CPF</label>
@@ -44,15 +61,17 @@ const LoginModal: React.FC<LoginModalProps> = ({ fecharModal }) => {
             <label htmlFor="manterConectado">Manter-me conectado?</label>
           </div>
 
-          <Button title="Entrar" script={handleLogin} tamanho="P" className={styles.Botao} />
+          <Button title="iniciar sessão" script={handleSubmit} tamanho="P" className={styles.Botao} />
         </form>
+
+        {/* SVG decorativo */}
         <div className={styles.svgdiv}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 400">
-            <path fill="#F5A802" fillOpacity="1" d="M0,192L1440,96L1440,320L0,320Z" className={styles.svg1}></path>
+            <path fill="#F5A802" d="M0,192L1440,96L1440,320L0,320Z" className={styles.svg1}></path>
           </svg>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#123465" fillOpacity="1" d="M0,192L1440,96L1440,320L0,320Z" className={styles.svg2}></path>
-            <line x1="0" y1="190" x2="1600" y2="70" stroke="#FFF" strokeWidth="30"/>
+            <path fill="#123465" d="M0,192L1440,96L1440,320L0,320Z" className={styles.svg2}></path>
+            <line x1="0" y1="190" x2="1600" y2="70" stroke="#FFF" strokeWidth="30" />
           </svg>
         </div>
       </div>

@@ -14,7 +14,7 @@ export const useLocal = () => {
   const fetchLocal = async () => {
     setLoading(true);
     try {
-      const response = await api.get("/local/list"); // LISTAR locais
+      const response = await api.get("/local/list"); 
       setLocal(response.data);
     } catch (err) {
       setError("Erro ao carregar locais");

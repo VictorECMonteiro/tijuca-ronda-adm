@@ -5,12 +5,12 @@ import { fetchUsers, fetchLocais, createRoute } from '../../api/userService';
 import SelectGeneratorLocal, { LocalItem } from '../SelectGeneratorLocal';
 import TimePicker from '../TimePicker';
 
-interface Vigia {
-  idUsuario: number;
-  nomedeUsuario: string;
-  status: number;
-  permissao: string;
-}
+// interface Vigia {
+//   idUsuario: number;
+//   nomedeUsuario: string;
+//   status: number;
+//   permissao: string;
+// }
 
 interface HorarioLocal {
   idLocal: number;
@@ -25,7 +25,7 @@ interface CreateRouteModalProps {
 
 const CreateRouteModal: React.FC<CreateRouteModalProps> = ({ onClose, onRouteCreated }) => {
   const [nomeRota, setNomeRota] = useState('');
-  const [vigias, setVigias] = useState<Vigia[]>([]);
+  // const [vigias, setVigias] = useState<Vigia[]>([]);
   const [vigiaSelecionado, setVigiaSelecionado] = useState('');
   const [horarioInicio, setHorarioInicio] = useState('');
   const [locais, setLocais] = useState<LocalItem[]>([]);
@@ -33,11 +33,12 @@ const CreateRouteModal: React.FC<CreateRouteModalProps> = ({ onClose, onRouteCre
   const [itinerario, setItinerario] = useState<HorarioLocal[]>([
     { idLocal: 0, nomeLocal: '', horario: '' }
   ]);
-  
+  const [error, setError] = useState('');
+
   useEffect(() => {
     (async () => {
       const users = await fetchUsers();
-      setVigias(users.filter((v: Vigia) => v.status === 1 && v.permissao === 'vigia'));
+      // setVigias(users.filter((v: Vigia) => v.status === 1 && v.permissao === 'vigia'));
       const locaisList = await fetchLocais();
       setLocais(locaisList);
     })();
@@ -54,12 +55,12 @@ const CreateRouteModal: React.FC<CreateRouteModalProps> = ({ onClose, onRouteCre
       setItinerario(novaLista);
     }
   }, [selectedLocais, locais]);
-  
+
   const handleSubmit = async () => {
-    if (!nomeRota || !vigiaSelecionado || !horarioInicio || itinerario.some((it) => !it.horario)) {
-  console.log('Preencha todos os campos e horários.');
-  return;
-}
+    if (!nomeRota || itinerario.some((it) => !it.horario)) {
+      setError("Preencha todos os campos e horários.");
+      return;
+    }
 
     const idLocalArray = itinerario.map((item) => item.idLocal);
     const horarioLocaisArray = itinerario.map((item) => item.horario);
@@ -72,13 +73,12 @@ const CreateRouteModal: React.FC<CreateRouteModalProps> = ({ onClose, onRouteCre
       horarioLocais: horarioLocaisArray,
     };
 
-    console.log('Enviando rota:', payload);
     try {
       const data = await createRoute(payload);
       onRouteCreated(data);
       onClose();
     } catch (error) {
-      console.error('Erro ao criar rota:', error);
+      setError("Erro ao criar rota. Verifique os dados e tente novamente.");
     }
   };
 
@@ -87,10 +87,11 @@ const CreateRouteModal: React.FC<CreateRouteModalProps> = ({ onClose, onRouteCre
       titlee="Criar nova rota"
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonTam="PA"
+      buttonTam="PPP"
       buttonText="Criar rota"
     >
-    
+      {error && <p className={styles.error}>{error}</p>}
+
       <div className={styles.labelhor}>
         <label className={styles.label}>Nome da rota</label>
         <input
@@ -102,57 +103,37 @@ const CreateRouteModal: React.FC<CreateRouteModalProps> = ({ onClose, onRouteCre
         />
       </div>
 
+      <SelectGeneratorLocal
+        list={locais}
+        selectedArray={selectedLocais}
+        setAtualLocal={setSelectedLocais}
+      />
+
+      {/* Área com rolagem para locais e horários */}
+      <div className={styles.scrollArea}>
+  {itinerario.map((item, index) => (
+    <div className={styles.div3} key={item.idLocal}>
       <div className={styles.createRouteRow}>
-        <div className={styles.div}>
-          <label className={styles.label}>Vigia</label>
-          <select
-            className={styles.createRouteSelect}
-            value={vigiaSelecionado}
-            onChange={(e) => setVigiaSelecionado(e.target.value)}
-          >
-            <option value="">Selecione um vigia</option>
-            {vigias.map((v) => (
-              <option key={v.idUsuario} value={v.idUsuario}>
-                {v.nomedeUsuario}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className={styles.labelhora}>
-          <label className={styles.label} >Horário de início</label>
-          <TimePicker time={horarioInicio} setTime={setHorarioInicio} />
-        </div>
-      </div>
-
-    
-        <SelectGeneratorLocal
-          list={locais}
-          selectedArray={selectedLocais}
-          setAtualLocal={setSelectedLocais}
+        <input
+          className={styles.createRouteInput1}
+          value={item.nomeLocal}
+          readOnly
         />
-      
+        <TimePicker
+          time={item.horario}
+          setTime={(horario) =>
+            setItinerario((prev) =>
+              prev.map((it, idx) =>
+                idx === index ? { ...it, horario } : it
+              )
+            )
+          }
+        />
+      </div>
+    </div>
+  ))}
+</div>
 
-   {itinerario.map((item, index) => (
-    <div className={styles.div3}>
-  <div key={item.idLocal} className={styles.createRouteRow}>
-    <input
-      className={styles.createRouteInput1}
-      value={item.nomeLocal}
-      readOnly 
-    />
-    <TimePicker
-      time={item.horario}
-      setTime={(horario) =>
-        setItinerario((prev) =>
-          prev.map((it, idx) =>
-            idx === index ? { ...it, horario } : it
-          )
-        )
-      }
-    />
-  </div>
-  </div>
-))}
     </GenericModal>
   );
 };

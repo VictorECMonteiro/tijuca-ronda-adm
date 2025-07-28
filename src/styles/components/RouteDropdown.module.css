@@ -1,0 +1,104 @@
+.dropdown {
+  margin-top: 5px;
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dropdownContent {
+  overflow: hidden;
+}
+
+.animate {
+  animation: slideDown 0.9s ease forwards;
+}
+
+@keyframes slideDown {
+  0% {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    max-height: 1000px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.locaisContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.localItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 1px solid #000000;
+  padding: 12px 16px;
+}
+
+.localItem:last-child {
+  border-bottom: none;
+}
+
+.localInfo {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+  flex: 1;
+}
+
+.localName {
+  font-weight: 500;
+  font-size: 12px;
+  width: 210px;
+}
+
+.localHorario {
+  font-weight: 500;
+  font-size: 12px;
+  width: 100px;
+  text-align: center;
+}
+
+.dragHandle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  cursor: grab;
+}
+
+.dragIcon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.applyButton {
+  color: #00a86b;
+  border: 2px solid #00a86b;
+  padding: 8px 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.applyButton:hover {
+  background-color: #00a86b;
+  border-color: #ffffff;
+  color: #ffffff;
+}

@@ -7,7 +7,7 @@ interface GenericModalProps {
   children: React.ReactNode;
   onClose: () => void;
   onSubmit: () => void;
-  buttonTam: "P" | "M" | "MM" | "G" | "PP" | "PPP" | "PPPP" | "Pa" | "PA";
+  buttonTam: "P" | "M" | "MM" | "G" | "PP" | "PPP" | "PPPP" | "Pa" | "PA" | "PAA";
   buttonText: string;
 }
 
@@ -36,11 +36,10 @@ const GenericModal: React.FC<GenericModalProps> = ({
 
          <div className={styles.svgdiv}>
          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                  <path fill="#F5A802" fill-opacity="1" d="M0,1L1860,160L1440,33040L0,320Z"  className={styles.svg2}></path>
+                  <path fill="#F5A802" fill-opacity="1" d="M0,1L880,160L1440,33040L0,320Z"  className={styles.svg2}></path>
                   </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                  <path fill="#123465" fill-opacity="1" d="M0,50L1540,170L1440,320L0,320Z"  className={styles.svg2}></path> 
-                  <line x1="0" y1="42" x2="1600" y2="180" stroke="#FFF123" strokeWidth="20"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#123465" fill-opacity="1" d="M0,32L1440,320L1440,320L0,320Z"></path>
+                  <line x1="0" y1="30" x2="2010" y2="407" stroke="#FFF123" strokeWidth="20"/></svg>
                 </div>
               </div>
             </div>

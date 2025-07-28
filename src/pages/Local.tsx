@@ -1,4 +1,4 @@
-import { ManagePage } from "../components/ManagePage";
+import { ManagePage } from "../components/table/ManagePage";
 import { useLocal } from "../hooks/useLocal";
 // import printLocalStyle from "../styles/components/PrintLocal.module.css"
 
@@ -42,8 +42,8 @@ const Local = () => {
   };
 
 
-  if (loading) return <p>Carregando...</p>;
-  if (error) return <p>{error}</p>;
+  // if (loading) return <p>Carregando...</p>;
+  // if (error) return <p>{error}</p>;
 
 
   

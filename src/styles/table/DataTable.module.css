@@ -1,0 +1,139 @@
+body {
+  background-color: #73839c1f;
+}
+
+
+
+.conter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* background-color: #123465; */
+}
+
+.liner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  /* background-color: aqua; */
+}
+
+.eader {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(100px, 3fr)); */
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  align-items: center;
+  flex: 1;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 6px 15px 6px 15px;
+  gap: 10px;
+  /* min-width: 90%;  */
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* background-color: #009624; */
+}
+
+.card {
+  width: 100%;
+  align-items: center;  
+  border-radius: 8px;
+  border: none;
+  background-color: #fff;
+  /* background-color: #009624; */
+  /* background-color: rgb(255, 255, 255); */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.077);
+  z-index: 2;
+}
+
+/* .card:hover{
+  background-color: #123465 ;
+  color: white;
+} */
+
+.linear {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  /* width: 100%; */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  /* background-color: #4c84d3; */
+}
+
+.within{
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(100px, 3fr)); */
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  align-items: center;
+  /* flex: 1; */
+  width: 100%;
+  padding: 20px;
+  gap: x;
+  /* background-color: aqua; */
+}
+
+.contbut {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 120px; 
+  /* height: 25px; */
+  /* background-color: #4c84d3; */
+}
+
+.columnLabel {
+  text-align: left;
+  gap: 10px;
+  /* background-color: #1FDE85; */
+  white-space: nowrap;
+  /* white-space: nowrap; */
+}
+
+.item {
+  text-align: left;
+  /* background-color: #1FDE85; */
+}
+
+.statusContainer {
+  display: flex;
+  gap: 5px;
+}
+
+.aButton {
+  background-color: #1FDE85;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.aButton:hover {
+  background-color: #009624;
+}
+
+
+/* @media (max-width:900px){
+  .eader{
+    grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+  }  
+  .card{
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    padding: 5%;
+  }
+
+} */
+
+
+
+

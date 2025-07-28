@@ -2,24 +2,32 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 1vh;
+    border-radius: 10px;
+    background-color: #123465;
+    padding: 3vh 0 6vh 4vh;
   }
   
-  .heder h2 {
-    font-size: 20px;
+  .heder h1 {
     font-weight: bold;
+    color: white;
+  }
+
+  .heder p {
+    color: #fff;
+    font-size: 15px;
   }
   
-  .addButton {
+  /* .addButton {
     background-color: #007bff;
     color: white;
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
+  } */
+/*   
   .addButton:hover {
     background-color: #0056b3;
-  }
-  
+  } 
+   */

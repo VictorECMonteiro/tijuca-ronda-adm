@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "../styles/Sidebar.module.css";
 import logo from '../assets/img/logo.png';
+import { NavLink } from "react-router-dom";
+
 
 import { FiUser, FiLogOut, FiHome, FiMapPin, FiMap, FiFileText } from "react-icons/fi";
 
@@ -13,7 +15,9 @@ const FileTextIcon = FiFileText as unknown as React.FC<React.SVGProps<SVGSVGElem
 
 const Sidebar = ({isOpen}: {isOpen?: any}) => {
   return (
-    <div className={isOpen || document.body.clientWidth > 470?styles.sidebar:styles.close}>
+    
+    <div className={isOpen || document.body.clientWidth > 470 ? styles.sidebar : styles.close}>
+    <div className={styles.top}>
       <div className={styles.user}>
         <img src={logo} alt="logo" className={styles.logo} />
         <div className={styles.user2}>
@@ -24,56 +28,46 @@ const Sidebar = ({isOpen}: {isOpen?: any}) => {
           </div>
         </div>
       </div>
-
+  
+      
       <div className={styles.menu}>
+          <NavLink to="/home" className={({ isActive }) =>
+            isActive ? `${styles.menuItem} ${styles.active}` : styles.menuItem}>
+            <HomeIcon className={styles.icons} />
+            <div className={styles.menutext}>Página Inicial</div>
+          </NavLink>
 
-        <a href="/" className={styles.menuItem1}>
-        <LogOutIcon className={styles.icone} />
-          <div className={styles.menutext1}>
-            Encerrar Sessão
-          </div>
-        </a>
-        
-          <a href="/home" className={styles.menuItem}>
-          <HomeIcon className={styles.icons} />
-           <div className={styles.menutext}>Página Inicial</div>
-          </a>
-        
-          <a href="/Users" className={styles.menuItem}>
-          <UserIcon className={styles.icons} />
-           <div className={styles.menutext}>Gerenciar Usuários</div>
-          </a>
+          <NavLink to="/Users" className={({ isActive }) =>
+            isActive ? `${styles.menuItem} ${styles.active}` : styles.menuItem}>
+            <UserIcon className={styles.icons} />
+            <div className={styles.menutext}>Gerenciar Usuários</div>
+          </NavLink>
 
-        <a href="/Local"  className={styles.menuItem}>
-          <MapPinIcon className={styles.icons} />
-          <div className={styles.menutext}>
-            Gerenciar Locais
-            </div>
-          </a>
+          <NavLink to="/Local" className={({ isActive }) =>
+            isActive ? `${styles.menuItem} ${styles.active}` : styles.menuItem}>
+            <MapPinIcon className={styles.icons} />
+            <div className={styles.menutext}>Gerenciar Locais</div>
+          </NavLink>
 
-        <a href="/Rota" className={styles.menuItem}>
-          <MapIcon className={styles.icons} />
-          <div className={styles.menutext}>
-            Gerenciar Rotas
-            </div>
-          </a>
-        
+          <NavLink to="/Rota" className={({ isActive }) =>
+            isActive ? `${styles.menuItem} ${styles.active}` : styles.menuItem}>
+            <MapIcon className={styles.icons} />
+            <div className={styles.menutext}>Gerenciar Rotas</div>
+          </NavLink>
 
-          <a href="#" className={styles.menuItem}>
-          <FileTextIcon className={styles.icons} />
-          <div className={styles.menutext}>
-            Consultar Registros
-            </div>
-          </a>
-        
-
+          <NavLink to="/Logs" className={({ isActive }) =>
+            isActive ? `${styles.menuItem} ${styles.active}` : styles.menuItem}>
+            <FileTextIcon className={styles.icons} />
+            <div className={styles.menutext}>Consultar Registros</div>
+          </NavLink>
+        </div>
       </div>
 
-      <footer className={styles.footer}>
-        <p>Tijuca Alimentos</p>
-        <p>2025</p>
-      </footer>
-    </div>
+      <NavLink to="/" className={styles.menuItem1}>
+        <LogOutIcon className={styles.icone} />
+        <div className={styles.menutext1}>Encerrar Sessão</div>
+      </NavLink>
+      </div>
   );
 };
 

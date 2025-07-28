@@ -24,7 +24,7 @@ export const useLoginModal = () => {
     const isAuthenticated = await login(Number(cpfSemFormatacao), senha);
 
     if (isAuthenticated) {
-      navigate("/Home");
+      navigate("/home");
     } else {
       alert("Falha no login. Verifique seu CPF e senha.");
     }

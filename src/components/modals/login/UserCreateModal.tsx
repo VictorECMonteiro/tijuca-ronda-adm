@@ -1,6 +1,6 @@
-import { useUserCreate } from "../../../hooks/useUserCreate";
 import GenericModal from "../GenericModal";
 import styles from "../../../styles/modals/UserCreateModal.module.css";
+import { useUserCreate } from "../../../hooks/useUserCreate";
 import { useState } from "react";
 import { api } from "../../../api/serviceapi";
 
@@ -12,6 +12,12 @@ const UserCreateModal = ({ onClose, onSuccess }) => {
   const [error, setError] = useState("");
 
   const handleSubmit = async () => {
+    // Validação simples
+    if (!cpf || !nome || !senha || !permissao) {
+      setError("Preencha todos os campos.");
+      return;
+    }
+
     try {
       const response = await api.post("/login/create", {
         cpf,
@@ -25,11 +31,11 @@ const UserCreateModal = ({ onClose, onSuccess }) => {
         setNome("");
         setSenha("");
         setPermissao("");
+        setError("");
         onSuccess();
         onClose();
       }
     } catch (error) {
-      console.error("Erro ao criar usuário:", error);
       setError("Erro ao criar usuário. Verifique os dados e tente novamente.");
     }
   };
@@ -39,7 +45,7 @@ const UserCreateModal = ({ onClose, onSuccess }) => {
       titlee="Criar novo usuário"
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonTam="MM"
+      buttonTam="PPP"
       buttonText="Criar usuário"
     >
       {error && <p className={styles.error}>{error}</p>}

@@ -1,4 +1,4 @@
-import styles from "../../styles/components/TableHeader.module.css";
+import styles from "../../styles/table/TableHeader.module.css";
 
 type TableHeaderProps = {
   title: string;

@@ -1,4 +1,4 @@
-import styles from "../../styles/components/TableActions.module.css";
+import styles from "../../styles/table/TableActions.module.css";
 import deleteIcon from "../../assets/img/delete.png";
 import editIcon from "../../assets/img/edit.png";
 import printIcon from "../../assets/img/printer.png"

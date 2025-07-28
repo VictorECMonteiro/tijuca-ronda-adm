@@ -28,30 +28,33 @@
 }
 .P {
     font-size: 10px;
-    width: 37%;
+    width: 20vh;
     height: 6vh;
     border-radius: 1vh;
     border:  none;
+    cursor: pointer;
 }
 
 .PP {
     font-size: 18px;
-    width: 8vw;
-    height: 4vh;
+    width: 120px;
+    /* height: 25px; */
     border-radius: 1vh;
     border:  none;
+    cursor: pointer;
 }
 
 .PPP {
     margin-bottom: -100px;
-    margin-left: 55px;
+    margin-left: 60px;
     width: 200px;
-    height: 13vh;
+    height: 6vh;
     background-color: #fff;
     border-radius: 1vh;
     border:  none;
     color: #000;
     z-index: 8;
+    cursor: pointer;
 }
 
 .PPP h1{
@@ -68,6 +71,7 @@
     border:  none;
     color: #000;
     z-index: 8;
+    cursor: pointer;
 }
 
 .PPPP h1{
@@ -83,6 +87,7 @@
     border-radius: 1vh;
     border:  none;
     color: #000;
+    cursor: pointer;
     z-index: 8;
 }
 
@@ -94,11 +99,17 @@
     font-size: 1.5vh;
 }
 .PAA {
-    font-size: 10px;
-    width: 9vw;
-    /* height: vh; */
-    border-radius: 1vh;
-    border:  none;
+    /* display: flex; */
+      /* margin-top: -25vh; */
+      /* height: 20vh; */
+      margin-left: 55px;
+      width: 200px;
+      background-color: #fff;
+      border-radius: 1vh;
+      border:  none;
+      color: #000;
+      cursor: pointer;
+      z-index: 8;
 }
 
 .M{
@@ -107,6 +118,7 @@
     background-color: #123465;
     border-radius: 1vh;
     border:  none;
+    cursor: pointer;
 }
 
 .MM {
@@ -117,6 +129,7 @@
     background-color: #fff;
     border-radius: 1vh;
     border:  none;
+    cursor: pointer;
     color: #000;
 }
 
@@ -133,4 +146,5 @@
     height: 8vh;
     border-radius: 1vh;
     border:  none;
+    cursor: pointer;
 }

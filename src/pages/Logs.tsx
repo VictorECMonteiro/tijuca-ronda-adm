@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import { useLogsFetch } from '../hooks/useLogsFetch';
-import { ManagePage } from '../components/ManagePage';
+import { ManagePage } from '../components/table/ManagePage';
 import styles from "../styles/pages/Logs.module.css"
 import { useLogSearch } from '../hooks/useLogSearch';
 
 export default function Logs() {
     const {Logs, loading, error} = useLogsFetch();
     const [idRonda, setIdRonda] = useState(0)
-    const {result} = useLogSearch(Logs)
+    const { result } = useLogSearch(Logs)
     useEffect(()=>{
       console.log(idRonda)
       console.log(Logs)

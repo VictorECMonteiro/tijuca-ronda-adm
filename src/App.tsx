@@ -9,7 +9,7 @@ import Logs from "./pages/Logs";
 
 const App: React.FC = () => {
   return (
-    // <Users />
+    // <Rota />
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/Home" element={<Home />} />

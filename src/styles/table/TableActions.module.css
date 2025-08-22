@@ -1,6 +1,6 @@
 .actions {
     display: flex;
-    gap: 30px;
+    gap: 4vh;
     z-index: 1000;
     justify-content: end;
     margin-right: 20%;
@@ -20,4 +20,10 @@
     cursor: pointer;
     opacity: 1;
     
+  }
+
+  @media (max-width: 470px) { 
+    .icon{
+      height: 2.5vh;
+    }
   }

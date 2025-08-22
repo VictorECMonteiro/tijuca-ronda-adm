@@ -1,52 +1,58 @@
-import GenericModal from "./GenericModal";
-import styles from "../../styles/modals/modalLocal.module.css";
-import { useState } from "react";
-import { useLocal } from "../../hooks/useLocal";
+import LeafletComponentMap from './LeafLetComponentMap';
+import { useState } from 'react';
+import axios from 'axios';
+import styles from '../../styles/modals/ModalLocal.module.css';
 
-const ModalLocal = ({ onClose }) => {
-  const [local, setLocal] = useState("");
-  const [error, setError] = useState("");
-  const { createLocal } = useLocal(); 
+interface ModalLocalProps {
+  reload?: boolean;
+  onClose: () => void;
+}
 
-  const handleSubmit = async () => {
-    if (!local.trim()) {
-      setError("O nome do local é obrigatório.");
-      return;
-    }
+const ModalLocal = ({ reload, onClose }: ModalLocalProps) => {
+  const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
+  const [nomeLocal, setNomeLocal] = useState('');
 
+  const criarLocal = async () => {
     try {
-      await createLocal(local);
-      setLocal("");
-      setError("");
-      onClose();  
+      await axios.post("http://192.168.9.249:9010/local/create", {
+        nomeLocal,
+        latitude: position.latitude,
+        longitude: position.longitude,
+        idSetor: 1,
+      });
+      alert('Local criado com sucesso!');
+      onClose();
     } catch (error) {
-      setError("Erro ao criar Local. Tente novamente.");
+      console.error(error);
+      alert('Erro ao criar local');
     }
   };
 
   return (
-    <GenericModal
-      titlee="Criar Local"
-      onClose={onClose}
-      onSubmit={handleSubmit}
-      buttonTam="PPP"
-      buttonText="Criar local"
-    >
-      {error && <p className={styles.error}>{error}</p>}
+    <div className={styles.container}>
+      <div className={styles.modalContainer}>
+  <div className={styles.mapContainer}>
+    <LeafletComponentMap setPosition={setPosition} />
+    <button className={styles.closeButton} onClick={onClose}>X</button>
+  </div>
 
-      <div className={styles.input}>
-        <div className={styles.inputGroup}>
-          <label>Nome do Local</label>
-          <input
-            className={styles.input1}
-            type="text"
-            placeholder="Nome do Local"
-            value={local}
-            onChange={(e) => setLocal(e.target.value)}
-          />
-        </div>
-      </div>
-    </GenericModal>
+  <div className={styles.form}>
+    <div>
+      <h1>Criar novo local</h1>
+      <input
+        placeholder="Nome do Local"
+        value={nomeLocal}
+        onChange={(e) => setNomeLocal(e.target.value)}
+        required
+      />
+    </div>
+    <button className={styles.botao} onClick={criarLocal}>
+      CRIAR LOCAL
+    </button>
+  </div>
+</div>
+
+    </div>
   );
 };
 

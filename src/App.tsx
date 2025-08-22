@@ -1,15 +1,19 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Routes, Route, redirect, Router, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Users from "./pages/Users"
 import Rota from "./pages/Rota";
 import Local from "./pages/Local";
 import Logs from "./pages/Logs";
+import getCookie from "./utils/getCookie";
+import { api } from "./api/serviceapi";
 
 const App: React.FC = () => {
-  return (
-    // <Rota />
+  const navigate = useNavigate();
+
+
+  return (    
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/Home" element={<Home />} />

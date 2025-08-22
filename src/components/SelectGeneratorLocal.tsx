@@ -1,4 +1,3 @@
-
 import React, { useState, ChangeEvent } from 'react';
 import styles from '../styles/modals/CreatRouteModal.module.css';
 import Button from "./Button";
@@ -44,7 +43,7 @@ const SelectGeneratorLocal: React.FC<SelectGeneratorProps> = ({ list, selectedAr
         ))}
       </select>
       </div>
-      <Button title="Adicionar local" script={onClickAdd} tamanho="P" className={styles.createRouteAddButton} />
+      <Button title="Adicionar Rota " script={onClickAdd} tamanho="P" className={styles.createRouteAddButton} />
      
     </div>
   );

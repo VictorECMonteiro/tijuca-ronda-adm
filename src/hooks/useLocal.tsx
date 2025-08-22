@@ -6,7 +6,7 @@ type LocalType = {
   nomeLocal: string;
 };
 
-export const useLocal = () => {
+export const useLocal = (reload: boolean) => {
   const [Local, setLocal] = useState<LocalType[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -38,7 +38,7 @@ export const useLocal = () => {
     fetchLocal();
   }, []);
 
-  console.log("Retorno da API Local:", Local);
+  // console.log("Retorno da API Local:", Local);
 
   return { Local, loading, error, fetchLocal, createLocal };
 };

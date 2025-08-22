@@ -8,7 +8,7 @@ type Rota = {
   idUsuario: number;
 };
 
-export const useRoutes = () => {
+export const useRoutes = (reload:any) => {
   const [rota, setRota] = useState<Rota[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -26,7 +26,7 @@ export const useRoutes = () => {
     };
 
     fetchRoutes();
-  }, []);
+  }, [reload]);
 
   return { rota, loading, error };
-};
+}

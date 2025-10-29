@@ -187,15 +187,20 @@ export function DataTable<T>({
                           </span>
 
                           
-  <button onClick={() => setOpenObs(openObs === local.idLocal ? null : local.idLocal)}>
-    <img src={Journal} alt="Observações" className={dropStyle.img1} />
-  </button>
+                          <span 
+                           onClick={() => setOpenObs(openObs === local.idLocal ? null : local.idLocal)}
+                           style={{ cursor: 'pointer', display: 'inline-block' }}
+                          >
+                          <img src={Journal} alt="Observações" className={dropStyle.img1} />
+                          </span>
 
-  {openObs === local.idLocal && (
-    <ObservationDrop
-    idGeral={registro?.idGeral} observacao={registro?.observacao}
-    />
-  )}
+                          {openObs === local.idLocal && (
+                          <ObservationDrop
+                          idGeral={registro?.idGeral} 
+                          observacao={registro?.observacao}
+                           />
+                          )}
+
 
 
 

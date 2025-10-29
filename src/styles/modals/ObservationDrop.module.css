@@ -1,0 +1,46 @@
+/* Container do dropdown de observações */
+.obsContainer {
+    position: absolute;        /* Fica relativo ao pai */
+    top: 100%;                 /* Abre logo abaixo do botão */
+    left: 0;
+    background-color: #fff;    /* Fundo branco */
+    border: 1px solid #ccc;    /* Borda cinza clara */
+    border-radius: 8px;        /* Cantos arredondados */
+    padding: 10px;             /* Espaçamento interno */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra */
+    z-index: 100;              /* Fica acima de outros elementos */
+    min-width: 200px;          /* Largura mínima */
+    max-width: 300px;          /* Largura máxima */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;                  /* Espaço entre observação e imagens */
+    max-height: 300px;         /* Altura máxima para scroll */
+    overflow-y: auto;          /* Scroll vertical se exceder altura */
+  }
+  
+  /* Preview das imagens dentro do dropdown */
+  .imgPreview {
+    width: 100%;       /* Ocupa toda a largura do container */
+    border-radius: 6px;
+    object-fit: cover; /* Mantém proporção das imagens */
+  }
+  
+  /* Botão do dropdown */
+  .span > button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .span > button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Texto da observação */
+  .span {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.4;
+  }
+  

@@ -9,7 +9,7 @@ export const login = async (cpf, senha) => {
       senhadeUsuario: senha,
     });
     
-    return response.status === 200;
+    return response.data;
   } catch (error) {
     console.error("Erro ao fazer login:", error);
     return false;

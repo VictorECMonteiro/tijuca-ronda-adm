@@ -27,7 +27,7 @@
     flex-grow: 1;
     flex-basis: 0;
     min-width: 10vw;
-    max-width: 550px;
+    max-width: 500px;
     height: 77vh;
     max-height: 90vw;
     background-color: #F0F6FF;
@@ -50,12 +50,12 @@
 }
 .form{
     width: 80%;
-    height: 55%;
+    height: 65%;
     justify-content: start;
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 7%;
+    margin-top: 8%;
     z-index: 2;
    
     /* border: 1px solid blue; */

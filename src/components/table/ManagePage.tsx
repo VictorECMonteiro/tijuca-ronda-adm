@@ -15,7 +15,7 @@ type ManagePageProps<T extends Record<string, any>> = {
   columns: Column<T>[];
   columnsDrop?: { label: string; key: string }[];
   data: T[];
-  dataDrop?: any;
+  dataDrop?: any[];
   onAdd?: () => void;
   onEdit?: (item: T) => void;
   onDelete?: (item: T) => void;

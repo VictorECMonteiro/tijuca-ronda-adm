@@ -4,6 +4,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import styles from "../styles/Sidebar.module.css";
 import logo from "../assets/img/logo.png";
 import colapseIcon from "../assets/img/arrows-collapse-vertical.svg";
+import getCookie from "../utils/getCookie";
+import writeCookie from "../utils/writeCookie";
 
 import {
   FiUser,
@@ -14,8 +16,6 @@ import {
   FiFileText,
 } from "react-icons/fi";
 
-import getCookie from "../utils/getCookie";
-import writeCookie from "../utils/writeCookie";
 
 interface SidebarProps {
   isOpen?: boolean;
@@ -33,24 +33,23 @@ const Sidebar: React.FC<SidebarProps> = ({
   isOpen = false,
   closeSide = () => {},
 }) => {
-  const [cookies, setCookies] = useState<{ nomedeUsuario: string; permissao: string }>({
+  const [cookies, setCookies] = useState<{ nomedeUsuario: string; permissao: string, idSetor:number }>({
     nomedeUsuario: "",
     permissao: "",
+    idSetor: 0
   });
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const cookieValue = getCookie("User");
-    if (!cookieValue) {
-    } else {
-      try {
-        setCookies(JSON.parse(cookieValue));
-      } catch {
-        writeCookie("User", "", 1);
-      }
+  useEffect(()=>{
+    let cookies = getCookie("User")
+    if(!cookies){
+      window.location.href = "/"
     }
-  }, [navigate]);
+    setCookies(JSON.parse(cookies))
+
+},[])
+
 
   const cleanCookies = () => {
     writeCookie("User", "", 1);
@@ -95,7 +94,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           }
         >
           <UserIcon className={styles.icons} />
-          <div className={styles.menutext}>Gerenciar Usuários</div>
+          <div className={styles.menutext2}>Gerenciar Usuários</div>
         </NavLink>
 
         <NavLink
@@ -125,7 +124,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           }
         >
           <FileTextIcon className={styles.icons} />
-          <div className={styles.menutext}>Consultar Registros</div>
+          <div className={styles.menutext2}>Consultar Registros</div>
         </NavLink>
 
         <NavLink
@@ -133,6 +132,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           className={({ isActive }) =>
             isActive ? `${styles.menuItem1} ${styles.active}` : styles.menuItem1
           }
+          onClick={cleanCookies}
         >
           <LogOutIcon className={styles.icone} />
           <div className={styles.menutext1}>Encerrar Sessão</div>

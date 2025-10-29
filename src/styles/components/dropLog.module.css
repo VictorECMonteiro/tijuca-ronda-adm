@@ -77,6 +77,15 @@
     padding-left: 50%;
     padding-right: 50%;
 }
+
+.img1{
+    height: 2vh;
+}
+
+.img2{
+    height: 1.5vh;
+}
+
 .content{
     width: 100%;
     /* height: 5vh; */
@@ -92,4 +101,25 @@
     /* margin: 1vh; */
     /* justify-content: space-between; */
     /* align-content: center; */
+}
+
+
+.observationDrop {
+  display: flex;
+  /* flex-direction: column; ou row se quiser imagens ao lado do texto */
+  align-items: center;    /* centraliza conteúdo verticalmente */
+  justify-content: center; /* centraliza horizontalmente */
+  gap: 5px;
+  padding: 5px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  width: 100%;  /* ocupa toda largura disponível da célula */
+  box-sizing: border-box;
+}
+
+.imgPreview {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 4px;
 }

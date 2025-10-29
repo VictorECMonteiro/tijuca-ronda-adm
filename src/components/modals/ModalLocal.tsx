@@ -31,6 +31,7 @@ const ModalLocal = ({ reload, onClose }: ModalLocalProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.modalContainer}>
+        
   <div className={styles.mapContainer}>
     <LeafletComponentMap setPosition={setPosition} />
     <button className={styles.closeButton} onClick={onClose}>X</button>

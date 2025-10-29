@@ -13,6 +13,7 @@ html, body {
   flex-direction: column;
   gap: 10px;
   /* background-color: #123465; */
+  overflow: hidden;
 }
 
 .liner {
@@ -32,7 +33,7 @@ html, body {
   flex: 1;
   font-weight: bold;
   border-radius: 8px;
-  /* padding: 6px 15px 6px 15px; */
+  padding: 6px 15px 6px 15px;
   gap: 10px;
   /* min-width: 90%;  */
   background-color: white;
@@ -81,7 +82,7 @@ html, body {
   flex-direction: column;
   /* gap: 10px; */
   height: 75vh; 
-  overflow-y: auto;
+  overflow-y:scroll
 }
 
 

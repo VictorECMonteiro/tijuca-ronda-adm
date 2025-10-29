@@ -2,7 +2,7 @@ import axios from "axios";
 import getCookie from "../utils/getCookie";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-let tokenHeader = {token: "", permissao: ""}
+let tokenHeader = {token: "", permissao: "", idSetor:0}
 let cookies = getCookie("User")
 
 
@@ -12,7 +12,7 @@ if(cookies){
 }
 
 else if(cookies === ""){
-  tokenHeader = {token: "", permissao: ""}
+  tokenHeader = {token: "", permissao: "", idSetor: 0}
   
 }
 
@@ -21,8 +21,9 @@ export const api = axios.create({
   baseURL: "http://192.168.9.249:9010",
   headers:{
     "x-auth-token": tokenHeader.token,
-    "permissao": tokenHeader.permissao
-  }
+    "permissao": tokenHeader.permissao,
+    "idSetor": tokenHeader.idSetor
+  } 
 });
 
 api.interceptors.response.use(

@@ -1,52 +1,92 @@
 import GenericModal from "../GenericModal";
 import styles from "../../../styles/modals/UserCreateModal.module.css";
 import { useUserCreate } from "../../../hooks/useUserCreate";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "../../../api/serviceapi";
 
-const UserCreateModal = ({ onClose, onSuccess }) => {
+type User = {
+  idUsuario: number;
+  cpf: string;
+  nomedeUsuario: string;
+  permissao: string;
+};
+
+type Props = {
+  onClose: () => void;
+  onSuccess: () => void;
+  user?: User | null; // se tiver → edição
+};
+
+const UserCreateModal = ({ onClose, onSuccess, user }: Props) => {
   const { cpf, handleCPFChange, setCpf } = useUserCreate();
   const [nome, setNome] = useState("");
-  const [senha, setSenha] = useState("");
+  const [senha, setSenha] = useState(""); // senha opcional na edição
   const [permissao, setPermissao] = useState("vigia");
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    if (user) {
+      setCpf(user.cpf);
+      setNome(user.nomedeUsuario);
+      setPermissao(user.permissao);
+      setSenha(""); 
+    }
+  }, [user, setCpf]);
+
   const handleSubmit = async () => {
-    // Validação simples
-    if (!cpf || !nome || !senha || !permissao) {
-      setError("Preencha todos os campos.");
+    if (!cpf || !nome || !permissao || (!user && !senha)) {
+      setError("Preencha todos os campos obrigatórios.");
       return;
     }
 
     try {
-      const response = await api.post("/login/create", {
-        cpf,
-        nomedeUsuario: nome,
-        senhadeUsuario: senha,
-        permissao,
-      });
+      if (user) {
+        
+        const payload: any = {
+          idUsuario: user.idUsuario,
+          cpf,
+          nomedeUsuario: nome,
+          permissao,
+        };
+        if (senha) payload.senhadeUsuario = senha;
 
-      if (response.status === 200 || response.status === 201) {
-        setCpf("");
-        setNome("");
-        setSenha("");
-        setPermissao("");
-        setError("");
-        onSuccess();
-        onClose();
+        const response = await api.post("/login/userDataModify", payload);
+
+        if (response.status === 200) {
+          onSuccess();
+          onClose();
+        }
+      } else {
+        
+        const response = await api.post("/login/create", {
+          cpf,
+          nomedeUsuario: nome,
+          senhadeUsuario: senha,
+          permissao,
+        });
+
+        if (response.status === 200 || response.status === 201) {
+          setCpf("");
+          setNome("");
+          setSenha("");
+          setPermissao("vigia");
+          setError("");
+          onSuccess();
+          onClose();
+        }
       }
-    } catch (error) {
-      setError("Erro ao criar usuário. Verifique os dados e tente novamente.");
+    } catch {
+      setError("Erro ao salvar usuário. Verifique os dados e tente novamente.");
     }
   };
 
   return (
     <GenericModal
-      titlee="Criar novo usuário"
+      titlee={user ? "Editar usuário" : "Criar novo usuário"}
       onClose={onClose}
       onSubmit={handleSubmit}
       buttonTam="PPP"
-      buttonText="Criar usuário"
+      buttonText={user ? "Salvar alterações" : "Criar usuário"}
     >
       {error && <p className={styles.error}>{error}</p>}
 
@@ -76,7 +116,7 @@ const UserCreateModal = ({ onClose, onSuccess }) => {
         </div>
 
         <div className={styles.inputGroup}>
-          <label>Senha do usuário</label>
+          <label>Senha do usuário {user ? "(preencha para alterar)" : ""}</label>
           <input
             className={styles.input1}
             type="password"
@@ -87,7 +127,7 @@ const UserCreateModal = ({ onClose, onSuccess }) => {
         </div>
 
         <div className={styles.selectcont2}>
-          <label>Função</label>
+          <label className={styles.label1}>Função</label>
           <select
             className={styles.select2}
             value={permissao}

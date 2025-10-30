@@ -131,10 +131,10 @@ body {
   height: 100vh;
   background-color: transparent;
   overflow: hidden;
-  /* transition: ease-out 20s; */
+  
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   z-index: 1000;
 }
 

@@ -54,7 +54,7 @@ const Local = () => {
   };
 
   return (
-    <div className={styles.coniner}>
+    <div className={styles.container}>
       <div className={styles.hamburguer}>
         <a onClick={()=>{setIsSideOpen(!isSideOpen)}} className={styles.sideButton}>
           <img src={hamburguer} alt="" />

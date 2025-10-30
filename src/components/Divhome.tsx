@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/components/Divhome.module.css";
+import getCookie from "../utils/getCookie";
 
 const Divhome: React.FC = () => {
+    const [cookies, setCookies] = useState({nomedeUsuario: ""})
+    useEffect(()=>{
+        let cookies = getCookie("User")
+        setCookies(JSON.parse(cookies))
+
+    },[])
     return (
         <div className={styles.containerr}>
             <h1>Olá</h1>
-            <span className={styles.name}>Ketely</span>
+            <span className={styles.name}>{cookies.nomedeUsuario}</span>
 
             <div className={styles.cards}>
                 <div className={styles.card}>

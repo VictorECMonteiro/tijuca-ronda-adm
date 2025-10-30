@@ -20,6 +20,7 @@ type ColumnDrop = {
 type DataTableProps<T> = {
   data: T[];
   columns: Column<T>[];
+  columnsDrop?: any[];
   onEdit?: (item: T) => void;
   onDelete?: (item: T) => void;
   onAdd?: () => void;

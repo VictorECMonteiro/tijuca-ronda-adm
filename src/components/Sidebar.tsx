@@ -6,6 +6,8 @@ import logo from "../assets/img/logo.png";
 import colapseIcon from "../assets/img/arrows-collapse-vertical.svg";
 import getCookie from "../utils/getCookie";
 import writeCookie from "../utils/writeCookie";
+import { FiUser, FiLogOut, FiHome, FiMapPin, FiMap, FiFileText } from "react-icons/fi";
+
 
 import {
   FiUser,
@@ -54,7 +56,6 @@ const Sidebar: React.FC<SidebarProps> = ({
   const cleanCookies = () => {
     writeCookie("User", "", 1);
   };
-
 
   return (
     <div className={isOpen || document.body.clientWidth > 470 ? styles.sidebar : styles.close}>

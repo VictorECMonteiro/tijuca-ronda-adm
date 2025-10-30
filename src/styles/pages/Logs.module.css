@@ -1,10 +1,22 @@
-.coniner {
+.container {
     display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
     /* flex-direction: column; */
     /* width: 100%; */
     height: 100vh;
+}
+
+.coniner {
+    display: flex;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+    /* width: 100%; */
+    height: 100vh;
+
 }
 
 .table {
@@ -32,6 +44,7 @@
 
 
 @media (max-width: 470px) {
+
     .coniner {
         display: flex;
         width: 100%;
@@ -40,9 +53,22 @@
         flex-direction: column;
         /* height: 110vh; */
         /* margin-top: 9%; */
-        
+
 
     }
+
+    .container {
+        display: flex;
+        width: 100%;
+        /* justify-content: center;
+        align-items: center; */
+        flex-direction: column;
+        /* height: 110vh; */
+        /* margin-top: 9%; */
+
+
+    }
+
 
     .sidebar {
         display: none;

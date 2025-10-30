@@ -16,6 +16,7 @@ export const useLocal = (reload?:any) => {
     setLoading(true);
     try {
       const response = await api.get("/local/list"); 
+      console.log(response.data)
       setLocal(response.data);
     } catch (err) {
       setError("Erro ao carregar locais");

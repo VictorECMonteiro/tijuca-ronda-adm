@@ -5,10 +5,11 @@ import { ManagePage } from "../components/table/ManagePage";
 import styles from "../styles/pages/Logs.module.css";
 import { useLogSearch } from "../hooks/useLogSearch";
 import LogDataTable from "../components/table/LogDataTable";
-import print from "../utils/Print";
 import { useLogData } from "../hooks/useLogData";
 import hamburguer from "../assets/img/list.svg";
 import LoadingComponent from "../components/LoadingComponent";
+import print from "../utils/Print";
+
 const LogDataTableStyle = require("../styles/components/logDataTable.js");
 
 export default function Logs() {

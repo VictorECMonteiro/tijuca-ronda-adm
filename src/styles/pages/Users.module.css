@@ -5,6 +5,13 @@
   height: 100vh;
   /* background-color: #fff; */
 }
+.container {
+  display: flex;
+  /* justify-content: space-around; */
+  /* flex-direction: row; */
+  height: 100vh;
+  /* background-color: #fff; */
+}
 .hamburguer{
   display: none;
 }

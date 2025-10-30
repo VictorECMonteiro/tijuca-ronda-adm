@@ -13,11 +13,11 @@ import ConfirmDeleteModal from "../components/modals/ConfirmDeleteModal";
 
 const printLocalStyle = require("../styles/components/PrintLocal.js");
 
-const Local = () => { 
+const Local = () => {
   const [reload, setReload] = useState(false)
   const [isSideOpen, setIsSideOpen] = useState(false)
   const { Local, loading, error } = useLocal(reload);
-  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedLocal, setSelectedLocal] = useState<any | null>(null);
 
@@ -27,13 +27,24 @@ const Local = () => {
     await windows.document.write(`
         <html>
             <head>
-                <title>PRINT TEST</title>
+                <title>${localObject.nomeLocal}</title>
                  <style>${printLocalStyle}</style>
             </head>
+
             `);
-    await windows.document.write(`<body>${content}</body>`);
-    await windows.document.write("</html>");  
-    setTimeout(()=>{ windows.print() }, 500)
+    await windows.document.write(`<body>
+
+      ${content}
+
+      </body>`);
+    await windows.document.write("</html>");
+    windows.print()
+    // window.print()
+    // windows.onload = () => {
+    //   windows.focus()
+    //   windows.print()
+    // }
+
   };
 
   const handleDeleteClick = (item: any) => {
@@ -56,11 +67,11 @@ const Local = () => {
   return (
     <div className={styles.container}>
       <div className={styles.hamburguer}>
-        <a onClick={()=>{setIsSideOpen(!isSideOpen)}} className={styles.sideButton}>
+        <a onClick={() => { setIsSideOpen(!isSideOpen) }} className={styles.sideButton}>
           <img src={hamburguer} alt="" />
         </a>
       </div>
-      <Sidebar isOpen={isSideOpen} closeSide={setIsSideOpen}/>
+      <Sidebar isOpen={isSideOpen} closeSide={setIsSideOpen} />
 
       <div className={styles.table}>
         {error && <p>{error}</p>}
@@ -73,19 +84,19 @@ const Local = () => {
               { label: "IdLocal", key: "idLocal" },
             ]}
             data={Local}
-            onAdd={() => setIsModalOpen(true)} 
+            onAdd={() => setIsModalOpen(true)}
             onDelete={handleDeleteClick}
             onPrint={print}
           />
         )}
 
         {isModalOpen && (
-          <ModalLocal 
-            reload={reload} 
+          <ModalLocal
+            reload={reload}
             onClose={() => {
               setIsModalOpen(false);
               setReload(!reload);
-            }} 
+            }}
           />
         )}
 

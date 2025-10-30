@@ -20,11 +20,10 @@ type ColumnDrop = {
 type DataTableProps<T> = {
   data: T[];
   columns: Column<T>[];
-  columnsDrop?: any[];
   onEdit?: (item: T) => void;
   onDelete?: (item: T) => void;
   onAdd?: () => void;
-  onPrint?: (item: any) => void;
+  onPrint?: (item?: any) => void;
   onClick?: (item: any) => void;
   children?: (item: T) => React.ReactNode;
   dataDrop?: any[];
@@ -65,6 +64,16 @@ export function DataTable<T>({
               {col.label}
             </span>
           ))}
+          {/* {onPrint &&(
+            <div className={dropStyle.span}>
+              <img
+                className={dropStyle.img1}
+                src={Journal}
+                alt="Imprimir"
+                onClick={() => onPrint()}
+              />
+            </div>
+          )} */}
         </div>
 
         {onAdd && (
@@ -86,8 +95,8 @@ export function DataTable<T>({
 
           const filteredDrop = Array.isArray(dataDrop)
             ? dataDrop.filter(
-                (dropItem) => dropItem.idRonda === (item as any).idRonda
-              )
+              (dropItem) => dropItem.idRonda === (item as any).idRonda
+            )
             : [];
 
           return (
@@ -108,8 +117,8 @@ export function DataTable<T>({
                         {col.render
                           ? col.render(item)
                           : col.key
-                          ? (item[col.key] as React.ReactNode)
-                          : null}
+                            ? (item[col.key] as React.ReactNode)
+                            : null}
                       </span>
                     ))}
                   </div>
@@ -118,7 +127,7 @@ export function DataTable<T>({
                     <TableActions
                       onEdit={onEdit ? () => onEdit(item) : undefined}
                       onDelete={onDelete ? () => onDelete(item) : undefined}
-                      
+                      onPrint={onPrint ? ()=> onPrint(item): undefined}
                     />
                   </div>
                 </div>
@@ -151,16 +160,16 @@ export function DataTable<T>({
                       </span>
                     ))}
 
-{onPrint && filteredDrop.length > 0 && (
-  <div className={dropStyle.span}>
-    <img
-      className={dropStyle.img1}
-      src={Journal}
-      alt="Imprimir"
-      onClick={() => onPrint(filteredDrop[0].idRonda)}
-    />
-  </div>
-)}
+                    {onPrint && filteredDrop.length > 0 && (
+                      <div className={dropStyle.span}>
+                        <img
+                          className={dropStyle.img1}
+                          src={Journal}
+                          alt="Imprimir"
+                          onClick={() => onPrint(filteredDrop[0].idRonda)}
+                        />
+                      </div>
+                    )}
 
                   </div>
 
@@ -187,19 +196,19 @@ export function DataTable<T>({
                             {getStatus(local, dropItem.data)}
                           </span>
 
-                          
-                          <span 
-                           onClick={() => setOpenObs(openObs === local.idLocal ? null : local.idLocal)}
-                           style={{ cursor: 'pointer', display: 'inline-block' }}
+
+                          <span
+                            onClick={() => setOpenObs(openObs === local.idLocal ? null : local.idLocal)}
+                            style={{ cursor: 'pointer', display: 'inline-block' }}
                           >
-                          <img src={Journal} alt="Observações" className={dropStyle.img1} />
+                            <img src={Journal} alt="Observações" className={dropStyle.img1} />
                           </span>
 
                           {openObs === local.idLocal && (
-                          <ObservationDrop
-                          idGeral={registro?.idGeral} 
-                          observacao={registro?.observacao}
-                           />
+                            <ObservationDrop
+                              idGeral={registro?.idGeral}
+                              observacao={registro?.observacao}
+                            />
                           )}
 
 

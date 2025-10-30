@@ -4,6 +4,7 @@ import styles from '../../styles/modals/CreatRouteModal.module.css';
 import { fetchUsers, fetchLocais, createRoute } from '../../api/userService';
 import SelectGeneratorLocal, { LocalItem } from '../SelectGeneratorLocal';
 import TimePicker from '../TimePicker';
+import { useLocal } from '../../hooks/useLocal';
 
 // interface Vigia {
 //   idUsuario: number;
@@ -28,6 +29,7 @@ const CreateRouteModal: React.FC<CreateRouteModalProps> = ({ onClose, onRouteCre
   // const [vigias, setVigias] = useState<Vigia[]>([]);
   const [vigiaSelecionado, setVigiaSelecionado] = useState('');
   const [horarioInicio, setHorarioInicio] = useState('');
+  const {Local, loading} = useLocal()
   const [locais, setLocais] = useState<LocalItem[]>([]);
   const [selectedLocais, setSelectedLocais] = useState<number[]>([]);
   const [itinerario, setItinerario] = useState<HorarioLocal[]>([
@@ -54,7 +56,7 @@ const CreateRouteModal: React.FC<CreateRouteModalProps> = ({ onClose, onRouteCre
       }).filter(Boolean) as HorarioLocal[];
       setItinerario(novaLista);
     }
-  }, [selectedLocais, locais]);
+  }, [selectedLocais, Local]);
 
   const handleSubmit = async () => {
     const palavraCount = nomeRota.trim().split(/\s+/).filter(p => p !== '').length;
@@ -122,7 +124,7 @@ const CreateRouteModal: React.FC<CreateRouteModalProps> = ({ onClose, onRouteCre
 </div>
 
       <SelectGeneratorLocal
-        list={locais}
+        list={Local}
         selectedArray={selectedLocais}
         setAtualLocal={setSelectedLocais}
       />

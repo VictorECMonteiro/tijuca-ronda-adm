@@ -1,4 +1,8 @@
-body {
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   background-color: #73839c1f;
 }
 
@@ -9,6 +13,7 @@ body {
   flex-direction: column;
   gap: 10px;
   /* background-color: #123465; */
+  overflow: hidden;
 }
 
 .liner {
@@ -54,11 +59,6 @@ body {
   z-index: 2;
 }
 
-/* .card:hover{
-  background-color: #123465 ;
-  color: white;
-} */
-
 .linear {
   display: flex;
   justify-content: space-between;
@@ -70,15 +70,31 @@ body {
   /* background-color: #4c84d3; */
 }
 
+.scrollWrapper {
+  height: 00%; 
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 10px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  /* gap: 10px; */
+  height: 75vh; 
+  overflow-y:scroll
+}
+
+
+
 .within{
   display: grid;
   /* grid-template-columns: repeat(auto-fit, minmax(100px, 3fr)); */
   grid-template-columns: 1fr 1fr 1fr 1fr; 
   align-items: center;
-  /* flex: 1; */
   width: 100%;
   padding: 20px;
-  gap: x;
+  gap: 10px;
   /* background-color: aqua; */
 }
 
@@ -86,7 +102,7 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 120px; 
+  width: 90px; 
   /* height: 25px; */
   /* background-color: #4c84d3; */
 }
@@ -96,12 +112,15 @@ body {
   gap: 10px;
   /* background-color: #1FDE85; */
   white-space: nowrap;
-  /* white-space: nowrap; */
+  font-size: 1rem;
 }
 
 .item {
   text-align: left;
-  /* background-color: #1FDE85; */
+  /* background-color: #1FDE85;  */
+  white-space: nowrap;
+  font-size: 1rem;
+  gap: 10px;
 }
 
 .statusContainer {
@@ -134,6 +153,46 @@ body {
 
 } */
 
+
+@media (max-width: 470px) {
+
+
+.eader {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 1fr; 
+  align-items: center;
+  /* gap: -5%; */
+  min-width: 69%; 
+}
+
+.within{
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(100px, 3fr)); */
+  grid-template-columns: 50px 50px 50px 50px;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  gap: 10px;
+  /* background-color: aqua; */
+}
+
+.columnLabel {
+  text-align: left;
+  /* gap: -5%; */
+  /* background-color: #1FDE85; */
+  white-space: nowrap;
+  font-size: 0.5em;
+}
+
+.item {
+  text-align: left;
+  /* background-color: #1FDE85;  */
+  white-space: nowrap;
+  font-size: 0.75em;
+  gap: 10px;
+}
+
+}
 
 
 

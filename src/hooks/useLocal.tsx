@@ -39,7 +39,7 @@ export const useLocal = (reload?:any) => {
     fetchLocal();
   }, [reload]);
 
-  console.log("Retorno da API Local:", Local);
+  // console.log("Retorno da API Local:", Local);
 
   return { Local, loading, error, fetchLocal, createLocal };
 };

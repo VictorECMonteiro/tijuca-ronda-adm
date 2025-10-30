@@ -24,9 +24,10 @@ export const useLoginModal = () => {
     }
 
     const isAuthenticated = await login(Number(cpfSemFormatacao), senha);
-
-    if (isAuthenticated) {
-      navigate("/home");
+    console.log(isAuthenticated)
+    if (isAuthenticated.success === true && isAuthenticated.status != 0 && isAuthenticated.permissao === "admin") {
+      writeCookie("User", JSON.stringify(isAuthenticated), 2000)
+      navigate("/Home");
     } else {
       alert("Falha no login. Verifique seu CPF e senha.");
     }

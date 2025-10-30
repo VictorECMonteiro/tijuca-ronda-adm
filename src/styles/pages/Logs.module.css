@@ -1,4 +1,4 @@
-.container {
+.coniner {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,12 +32,15 @@
 
 
 @media (max-width: 470px) {
-    .container {
+    .coniner {
         display: flex;
         width: 100%;
         /* justify-content: center;
         align-items: center; */
         flex-direction: column;
+        /* height: 110vh; */
+        /* margin-top: 9%; */
+        
 
     }
 
@@ -47,18 +50,16 @@
 
     .table {
         /* height: 100vh; */
-        margin: 0em;
+        margin: -4em;
         margin-top: 3%;
-        width: 80%;
-        margin-right: 10%;
+        width: 90%;
+        /* margin-right: 10%; */
         /* padding: 5%; */
         /* background-color: blue; */
     }
 
     .hamburguer {
         display: flex;
-        /* align-items: center; */
-        /* justify-content: center; */
         width: 100%;
     }
 
@@ -66,7 +67,7 @@
         display: flex;
         align-items: center;
         /* justify-content: center; */
-        height: 16vh;
+        height: 8vh;
         width: 100%;
         background-color: #fff;
         box-shadow: 1px 2px 2px -1px rgba(0, 0, 0, 0.43);
@@ -82,7 +83,7 @@
         width: 8%;
         /* background-color: blue; */
         margin-left: 5%;
-        margin-top: 10%;
+        /* margin-top: 10%; */
 
     }
 

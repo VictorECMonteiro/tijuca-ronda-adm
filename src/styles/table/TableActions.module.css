@@ -1,10 +1,10 @@
 .actions {
     display: flex;
-    gap: 30px;
+    gap: 4vh;
     z-index: 1000;
     justify-content: end;
     margin-right: 20%;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
   }
   
   .actions button {
@@ -19,5 +19,11 @@
     visibility: visible;
     cursor: pointer;
     opacity: 1;
-    cursor: pointer;
+    
+  }
+
+  @media (max-width: 470px) { 
+    .icon{
+      height: 2.5vh;
+    }
   }

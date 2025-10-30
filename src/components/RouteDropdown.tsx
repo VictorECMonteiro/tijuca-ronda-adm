@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import dragdrop from "../assets/img/dragdrop.png";
 import styles from "../styles/components/RouteDropdown.module.css";
 import { DragDropContext, Droppable, Draggable, DropResult } from "@hello-pangea/dnd";
-import { fetchLocaisByRota, updateLocaisDaRota } from "../api/rotaApi";
+import { fetchLocaisByRota, changeLocalOrder } from "../api/rotaApi";
 
 type Local = {
   idLocal: number;
   nomeLocal: string;
   horario: string;
-  id: number;
+  id: number; // mantido para garantir identificador único
 };
 
 type RouteDropdownProps = {
@@ -17,6 +17,7 @@ type RouteDropdownProps = {
 
 const RouteDropdown = ({ idRota }: RouteDropdownProps) => {
   const [locais, setLocais] = useState<Local[]>([]);
+  const [listaAnterior, setListaAnterior] = useState<number[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -27,9 +28,11 @@ const RouteDropdown = ({ idRota }: RouteDropdownProps) => {
       try {
         const data = await fetchLocaisByRota(idRota);
         setLocais(data);
+        setListaAnterior(data.map(local => local.id));
       } catch {
         setError("Erro ao carregar locais");
         setLocais([]);
+        setListaAnterior([]);
       } finally {
         setLoading(false);
       }
@@ -42,43 +45,35 @@ const RouteDropdown = ({ idRota }: RouteDropdownProps) => {
     if (!destination || destination.index === source.index) return;
   
     const updated = Array.from(locais);
-    // Remove o item movido da posição original
     const [movedItem] = updated.splice(source.index, 1);
-    // Insere o item na nova posição
     updated.splice(destination.index, 0, movedItem);
   
-    
-    const updatedWithNewIds = updated.map((local, index) => ({
+    const horarios = locais.map(local => local.horario);
+    const reordered = updated.map((local, index) => ({
       ...local,
-      id: index + 1,
+      horario: horarios[index], 
     }));
   
-    // Ordena visualmente pela hora (do menor para o maior)
-    const sortedByHorario = updatedWithNewIds.sort((a, b) => {
-      const [h1, m1] = a.horario.split(":").map(Number);
-      const [h2, m2] = b.horario.split(":").map(Number);
-      return h1 !== h2 ? h1 - h2 : m1 - m2;
-    });
-  
-    setLocais(sortedByHorario);
-    console.log("Locais atualizados e ordenados:", sortedByHorario);
+    setLocais(reordered);
   };
   
+
   const aplicarMudancas = async () => {
-    
-    const payload = locais.map(({ idLocal, id }) => ({
-      idLocal,
-      id,
-    }));
-  
-    const success = await updateLocaisDaRota(idRota, payload);
+    const payload = {
+      idRota,
+      listaAnterior,
+      listaAtual: locais.map(local => local.id),
+    };
+
+    const success = await changeLocalOrder(payload);
+
     if (success) {
       alert("Mudanças aplicadas com sucesso!");
+      setListaAnterior(locais.map(local => local.id));
     } else {
       alert("Erro ao aplicar mudanças.");
     }
   };
-  
 
   return (
     <div className={styles.dropdown}>
@@ -99,8 +94,8 @@ const RouteDropdown = ({ idRota }: RouteDropdownProps) => {
               >
                 {locais.map((local, index) => (
                   <Draggable
-                    key={local.idLocal}
-                    draggableId={String(local.idLocal)}
+                    key={`${local.idLocal}-${local.id}`} 
+                    draggableId={`${local.idLocal}-${local.id}`}
                     index={index}
                   >
                     {(provided, snapshot) => (

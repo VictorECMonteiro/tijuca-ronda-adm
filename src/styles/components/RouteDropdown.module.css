@@ -1,7 +1,7 @@
 .dropdown {
   margin-top: 5px;
   background-color: #ffffff;
-  padding: 16px;
+  padding: 6px;
   border-radius: 0 0 8px 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -55,13 +55,13 @@
 
 .localName {
   font-weight: 500;
-  font-size: 12px;
+  font-size: 0.7rem;
   width: 210px;
 }
 
 .localHorario {
   font-weight: 500;
-  font-size: 12px;
+   font-size: 0.7rem;
   width: 100px;
   text-align: center;
 }
@@ -101,4 +101,29 @@
   background-color: #00a86b;
   border-color: #ffffff;
   color: #ffffff;
+}
+
+@media (max-width: 480px) {
+
+  .localInfo {
+  display: flex;
+  gap: 0;
+  align-items: center;
+  flex: 1;
+}
+
+  
+  .localName,
+  .localHorario {
+    width: 100%;
+    text-align: left;
+    /* background-color: aqua; */
+    /* font-size: ; */
+  }
+  .dragHandle {
+    align-self: flex-end;
+    margin: 0 0 0 150px;
+    /* background-color: rgb(37, 169, 169); */
+  }
+  
 }

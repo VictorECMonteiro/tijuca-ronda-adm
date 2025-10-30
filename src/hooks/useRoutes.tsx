@@ -29,4 +29,4 @@ export const useRoutes = (reload:any) => {
   }, [reload]);
 
   return { rota, loading, error };
-};
+}

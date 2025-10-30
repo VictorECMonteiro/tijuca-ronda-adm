@@ -10,8 +10,10 @@ import getCookie from "./utils/getCookie";
 import { api } from "./api/serviceapi";
 
 const App: React.FC = () => {
-  return (
-    // <Rota />
+  const navigate = useNavigate();
+
+
+  return (    
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/Home" element={<Home />} />

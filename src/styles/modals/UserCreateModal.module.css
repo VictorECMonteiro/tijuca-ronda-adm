@@ -24,7 +24,7 @@
 
 .input1{
     padding: 0px 0px 0px 10px;
-    height: 6vh;
+    height: 5.5vh;
     border-radius: 5px;
     border: none;
     -webkit-box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.25);
@@ -75,6 +75,21 @@
     height: 4vh;
     background-color: #fff;
 }
+
+.label1{
+    padding-left: 2vh;
+    font-size: 11px;
+    margin-top: 1vh;    
+    font-weight: 500;
+    padding-left: 2vh;
+    font-size: 1.5vh;
+    font-family: "Poppins";
+}
+
+.select2, label{
+    padding-left: 1vh;
+}
+
 .error {
     color: red;
     margin-bottom: 10px;

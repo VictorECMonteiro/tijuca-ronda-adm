@@ -35,14 +35,14 @@ const CreateRouteModal: React.FC<CreateRouteModalProps> = ({ onClose, onRouteCre
   ]);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    (async () => {
-      const users = await fetchUsers();
-      // setVigias(users.filter((v: Vigia) => v.status === 1 && v.permissao === 'vigia'));
-      const locaisList = await fetchLocais();
-      setLocais(locaisList);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const users = await fetchUsers();
+  //     // setVigias(users.filter((v: Vigia) => v.status === 1 && v.permissao === 'vigia'));
+  //     const locaisList = await fetchLocais();
+  //     setLocais(locaisList);
+  //   })();
+  // }, []);
 
   useEffect(() => {
     if (selectedLocais.length === 0) {
@@ -57,14 +57,20 @@ const CreateRouteModal: React.FC<CreateRouteModalProps> = ({ onClose, onRouteCre
   }, [selectedLocais, locais]);
 
   const handleSubmit = async () => {
+    const palavraCount = nomeRota.trim().split(/\s+/).filter(p => p !== '').length;
+    if (palavraCount < 5) {
+      setError("O nome da rota deve ter pelo menos 5 palavras.");
+      return;
+    }
+  
     if (!nomeRota || itinerario.some((it) => !it.horario)) {
       setError("Preencha todos os campos e horários.");
       return;
     }
-
+  
     const idLocalArray = itinerario.map((item) => item.idLocal);
     const horarioLocaisArray = itinerario.map((item) => item.horario);
-
+  
     const payload = {
       nomeRota,
       horarioInicio,
@@ -72,15 +78,17 @@ const CreateRouteModal: React.FC<CreateRouteModalProps> = ({ onClose, onRouteCre
       idLocal: idLocalArray,
       horarioLocais: horarioLocaisArray,
     };
-
+  
     try {
       const data = await createRoute(payload);
       onRouteCreated(data);
       onClose();
+      window.location.reload(); 
     } catch (error) {
       setError("Erro ao criar rota. Verifique os dados e tente novamente.");
     }
   };
+  
 
   return (
     <GenericModal
@@ -102,6 +110,16 @@ const CreateRouteModal: React.FC<CreateRouteModalProps> = ({ onClose, onRouteCre
           onChange={(e) => setNomeRota(e.target.value)}
         />
       </div>
+
+      <div className={styles.labelhor}>
+  <label className={styles.label}>Horário de Início</label>
+  <input
+    className={styles.createRouteInput}
+    type="time"
+    value={horarioInicio}
+    onChange={(e) => setHorarioInicio(e.target.value)}
+  />
+</div>
 
       <SelectGeneratorLocal
         list={locais}

@@ -4,6 +4,7 @@ import { useUserCreate } from "../../../hooks/useUserCreate";
 import { useState, useEffect } from "react";
 import { api } from "../../../api/serviceapi";
 import Button from "../../Button";
+import { removeFormatCPF } from "../../../utils/formatCPF";
 
 type User = {
   idUsuario: number;
@@ -58,9 +59,10 @@ const UserCreateModal = ({ onClose, onSuccess, user }: Props) => {
           onClose();
         }
       } else {
-        
+        let cpfNoFormat = removeFormatCPF(cpf);
+        console.log(cpfNoFormat)
         const response = await api.post("/login/create", {
-          cpf,
+          cpf: cpfNoFormat,
           nomedeUsuario: nome,
           senhadeUsuario: senha,
           permissao,

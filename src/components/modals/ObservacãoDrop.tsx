@@ -13,7 +13,7 @@ const ObservationDrop: React.FC<ObservationDropProps> = ({ idGeral, observacao }
 
   useEffect(() => {
     if (open && idGeral) { 
-      fetch(`http://192.168.9.249:5050/listFiles.php?idGeral=${idGeral}`)
+      fetch(`http://192.168.1.8:5050/listFiles.php?idGeral=${idGeral}`)
         .then((res) => res.json())
         .then((data) => {
           setImagens(data || []);
@@ -30,7 +30,7 @@ const ObservationDrop: React.FC<ObservationDropProps> = ({ idGeral, observacao }
             ? imagens.map((img: string, i: number) => (
                 <img
                   key={i}
-                  src={`http://192.168.9.249:5050/files/${img}`}
+                  src={`http://192.168.1.8:5050/files/${img}`}
                   alt={img}
                   className={dropStyle.imgPreview}
                 />

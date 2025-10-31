@@ -14,7 +14,7 @@ const ModalLocal = ({ reload, onClose }: ModalLocalProps) => {
 
   const criarLocal = async () => {
     try {
-      await axios.post("http://192.168.9.249:9010/local/create", {
+      await axios.post("http://192.168.1.8:9010/local/create", {
         nomeLocal,
         latitude: position.latitude,
         longitude: position.longitude,

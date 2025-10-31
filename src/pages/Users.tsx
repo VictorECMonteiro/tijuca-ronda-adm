@@ -50,7 +50,7 @@ const Users = () => {
 
   const handleDeleteUser = async () => {
     if (!selectedUser) return;
-    setLoadingAction(true); 
+    setLoadingAction(true);
     try {
       const response = await api.post("/login/deactivate", { idUsuario: selectedUser.idUsuario });
       if (response.status === 200) {
@@ -113,8 +113,10 @@ const Users = () => {
           columns={columns}
           data={formattedUsers}
           onAdd={() => {
-            setEditingUser(null); 
-            setIsModalOpen(true);
+            console.log(isModalOpen)
+            setIsModalOpen(true)
+            // setEditingUser(null); 
+            console.log("Tentando Abrir")
           }}
           onEdit={(item) => {
             const originalUser = users.find(u => u.idUsuario === item.idUsuario);
@@ -123,24 +125,26 @@ const Users = () => {
           onDelete={handleDeleteFormatted}
         />
 
-        {isModalOpen && (
-          <UserCreateModal
-            user={editingUser}
-            onClose={() => setIsModalOpen(false)}
-            onSuccess={() => setReload(!reload)}
-          />
-        )}
-
-        <ConfirmDeleteModal
-          isOpen={isDeleteModalOpen}
-          message={`Deseja realmente excluir o usuário "${selectedUser?.nomedeUsuario}"?`}
-          onConfirm={handleDeleteUser}
-          onCancel={() => {
-            setIsDeleteModalOpen(false);
-            setSelectedUser(null);
-          }}
-        />
       </div>
+
+      {isModalOpen && (
+        <UserCreateModal
+
+          user={editingUser}
+          onClose={() => setIsModalOpen(false)}
+          onSuccess={() => setReload(!reload)}
+        />
+      )}
+
+      <ConfirmDeleteModal
+        isOpen={isDeleteModalOpen}
+        message={`Deseja realmente excluir o usuário "${selectedUser?.nomedeUsuario}"?`}
+        onConfirm={handleDeleteUser}
+        onCancel={() => {
+          setIsDeleteModalOpen(false);
+          setSelectedUser(null);
+        }}
+      />
     </div>
   );
 };

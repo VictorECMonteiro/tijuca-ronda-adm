@@ -18,7 +18,7 @@ else if(cookies === ""){
 
 
 export const api = axios.create({
-  baseURL: "http://192.168.2.211:9010",
+  baseURL: "http://192.168.1.8:9010",
   headers:{
     "x-auth-token": tokenHeader.token,
     "permissao": tokenHeader.permissao,

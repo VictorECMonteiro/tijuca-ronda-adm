@@ -3,6 +3,7 @@ import styles from "../../../styles/modals/UserCreateModal.module.css";
 import { useUserCreate } from "../../../hooks/useUserCreate";
 import { useState, useEffect } from "react";
 import { api } from "../../../api/serviceapi";
+import Button from "../../Button";
 
 type User = {
   idUsuario: number;
@@ -73,9 +74,11 @@ const UserCreateModal = ({ onClose, onSuccess, user }: Props) => {
           setError("");
           onSuccess();
           onClose();
+          alert("Usuario Criado com Sucesso")
         }
       }
     } catch {
+      alert("Usuario Criado sem Sucesso")
       setError("Erro ao salvar usuário. Verifique os dados e tente novamente.");
     }
   };
@@ -137,6 +140,9 @@ const UserCreateModal = ({ onClose, onSuccess, user }: Props) => {
             <option value="vigia">Vigia</option>
           </select>
         </div>
+        <Button tamanho="PP" script={handleSubmit} title={"Adicionar Usuário"}/>
+
+        
       </div>
     </GenericModal>
   );

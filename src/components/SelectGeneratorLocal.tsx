@@ -32,7 +32,7 @@ const SelectGeneratorLocal: React.FC<SelectGeneratorProps> = ({ list, selectedAr
     <div className={styles.createRouteRow2}>
       <div className={styles.div2}>
         <label className={styles.label}> Selecione o Local </label>
-      <select className={styles.createRouteSelect} onChange={handleChange} defaultValue="">
+      <select className={styles.createRouteInput} onChange={handleChange} defaultValue="">
         <option value="" disabled>
           Selecione os locais
         </option>
@@ -43,7 +43,7 @@ const SelectGeneratorLocal: React.FC<SelectGeneratorProps> = ({ list, selectedAr
         ))}
       </select>
       </div>
-      <Button title="Adicionar Rota " script={onClickAdd} tamanho="P" className={styles.createRouteAddButton} />
+      <Button title="Adicionar Local" script={onClickAdd} tamanho="P" className={styles.createRouteAddButton} />
      
     </div>
   );
